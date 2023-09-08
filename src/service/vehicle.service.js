@@ -12,7 +12,7 @@ class VehicleService {
         return axios.get(API_URL + "/");
     }
 
-    getVwhicleById(id) {
+    getVehicleById(id) {
         return axios.get(API_URL + "/" + id);
     }
 
@@ -21,7 +21,7 @@ class VehicleService {
     }
 
     editVehicle(vehicle) {
-        return axios.post(API_URL + "/vehicle/" + product.id, vehicle);
+        return axios.post(API_URL + "/vehicle/" + vehicle.id, vehicle);
     }
 
 }

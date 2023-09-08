@@ -1,0 +1,60 @@
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+function NavbarSystem() {
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container fluid>
+        <Navbar.Brand href="#">Fleet Control</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="#action1">Home</Nav.Link>
+            
+            <NavDropdown title="Vehicles" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="register-vehicle">Register Vehicle</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Vehicle</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action4">List Vehicles</NavDropdown.Item>
+              <NavDropdown.Item href="#action5">Maintenance Control</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Drivers" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Register Driver</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Driver</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action4">List Drivers</NavDropdown.Item>
+              <NavDropdown.Item href="#action5">Hours Control</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Tyres" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Register Tyre</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Tyre</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action4">List Tyres</NavDropdown.Item>
+              <NavDropdown.Item href="#action5">Tyre Reading</NavDropdown.Item>
+            </NavDropdown>
+           
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default NavbarSystem;

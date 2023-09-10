@@ -1,15 +1,13 @@
-import AddDriver from './components/AddDriver'
-import AddVehicle from './components/AddVehicle'
+
 import NavbarSystem from './components/Navbar'
+import RoutesApp from './routes'
 
 
 function App() {
 
   return (
     <>
-     <NavbarSystem />
-     <AddVehicle />
-     <AddDriver />
+     <RoutesApp />
     </>
   )
 }

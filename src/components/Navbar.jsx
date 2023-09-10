@@ -9,7 +9,7 @@ function NavbarSystem() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Fleet Control</Navbar.Brand>
+        <Navbar.Brand to="/home">Fleet Control</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -17,17 +17,17 @@ function NavbarSystem() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link to="#/home">Home</Nav.Link>
             
             <NavDropdown title="Vehicles" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="register-vehicle">Register Vehicle</NavDropdown.Item>
+              <NavDropdown.Item href="/register-vehicle">Register Vehicle</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Vehicle</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action4">List Vehicles</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Maintenance Control</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Drivers" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Register Driver</NavDropdown.Item>
+              <NavDropdown.Item href="/register-driver">Register Driver</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Driver</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action4">List Drivers</NavDropdown.Item>

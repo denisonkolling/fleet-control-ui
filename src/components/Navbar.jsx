@@ -17,7 +17,7 @@ function NavbarSystem() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link to="#/home">Home</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
             
             <NavDropdown title="Vehicles" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-vehicle">Register Vehicle</NavDropdown.Item>
@@ -34,7 +34,7 @@ function NavbarSystem() {
               <NavDropdown.Item href="#action5">Hours Control</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Tyres" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Register Tyre</NavDropdown.Item>
+              <NavDropdown.Item href="/register-tyre">Register Tyre</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Tyre</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action4">List Tyres</NavDropdown.Item>

@@ -27,16 +27,17 @@ const ListRepairOrder = () => {
 		<>
 			<NavbarSystem />
 			<Container>
-				<h1>Repair Orders List</h1>
+				<h1>Service Orders List</h1>
 					{repairOrderList.map((o) => (
 				<CardGroup className='m-2'>
         <Card>
 						<tr>
-							<CardHeader>Repair Order Number: {o.workOrderId}</CardHeader>
-							<h6>Plate: {o.plate}</h6>
+							<CardHeader>Service Order Number: {o.workOrderId}</CardHeader>
+							<h6>Vehicle: {o.plate}</h6>
 							<span>Date: {o.openDate}</span><br/>
-							<span>Service: {o.service.serviceName}</span><br/>
-							<span>Part: {o.part.partName}</span>
+							<span>Service: {o.service.serviceName} U$ {o.service.servicePrice}</span>
+              <br/>
+							<span>Part: {o.part.partName} U$ {o.part.partPrice}</span>
 						</tr>
           </Card>
 				</CardGroup>

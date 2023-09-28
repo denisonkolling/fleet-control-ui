@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
-import { Form, Button, Container, Navbar } from 'react-bootstrap';
+import { Form, Button, Container, Navbar, Card } from 'react-bootstrap';
 import driverService from '../service/driver.service';
 import NavbarSystem from '../components/Navbar';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 const AddDriver = () => {
 	const [driver, setDriver] = useState({
@@ -41,7 +42,10 @@ const AddDriver = () => {
 	return (
 		<>
 			<NavbarSystem />
-			<Container>
+			<Container className='mt-4 col-md-4'>
+				<Card>
+				<CardHeader className='text-center fs-4'>Drivers Registration Form</CardHeader>
+				<Container className='p-4'>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group className="mb-3" controlId="name">
 						<Form.Label>First Name</Form.Label>
@@ -110,6 +114,8 @@ const AddDriver = () => {
 						</Button>
 					</div>
 				</Form>
+				</Container>
+				</Card>
 			</Container>
 		</>
 	);

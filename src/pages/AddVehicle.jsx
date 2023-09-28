@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Card } from 'react-bootstrap';
 import vehicleService from '../service/vehicle.service';
 import NavbarSystem from '../components/Navbar';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 const AddVehicle = () => {
 	const [vehicle, setVehicle] = useState({
@@ -44,7 +45,10 @@ const AddVehicle = () => {
 	return (
 		<>
 			<NavbarSystem />
-			<Container className='col-4 mt-4'>
+			<Container className='mt-4 col-md-4'>
+			<Card>
+				<CardHeader className='text-center fs-4'>Vehicle Registration Form</CardHeader>
+				<Container className='p-4'>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group className="mb-3" controlId="name">
 						<Form.Label>Registration Number</Form.Label>
@@ -97,7 +101,8 @@ const AddVehicle = () => {
 						/>
 					</Form.Group>
 
-					<ButtonGroup className='mt-2'>
+					<Form.Label>Fuel</Form.Label><br></br>
+					<ButtonGroup>
 						{radios.map((radio, idx) => (
 							<ToggleButton
 								key={idx}
@@ -113,13 +118,15 @@ const AddVehicle = () => {
 						))}
 					</ButtonGroup>
 
-					<div className="d-flex justify-content-end">
+					<div className="d-flex justify-content-end mt-4">
 						<Button variant="primary" type="submit">
 							Save
 						</Button>
 					</div>
 
 				</Form>
+				</Container>
+				</Card>
 			</Container>
 		</>
 	);

@@ -5,6 +5,7 @@ import AddDriver from '../pages/AddDriver';
 import AddVehicle from '../pages/AddVehicle';
 import AddTyre from '../pages/AddTyre';
 import ListRepairOrder from '../pages/ListRepairOrder';
+import ListVehicle from '../pages/ListVehicle';
 
 const RoutesApp = () => {
 	return (
@@ -16,6 +17,7 @@ const RoutesApp = () => {
 				<Route exact path="/register-vehicle" element={<AddVehicle />} />
 				<Route exact path="/register-tyre" element={<AddTyre />} />
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
+				<Route exact path="/vehicle" element={<ListVehicle />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} /> */}

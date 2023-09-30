@@ -9,7 +9,7 @@ class VehicleService {
     }
 
     getAllVehicle() {
-        return axios.get(API_URL + "/");
+        return axios.get(API_URL + "/vehicle");
     }
 
     getVehicleById(id) {

@@ -47,7 +47,7 @@ const AddVehicle = () => {
 			<NavbarSystem />
 			<Container className='mt-4 col-md-4'>
 			<Card>
-				<CardHeader className='text-center fs-4'>Vehicle Registration Form</CardHeader>
+				<CardHeader className='text-center fs-4'>Vehicle Registration</CardHeader>
 				<Container className='p-4'>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group className="mb-3" controlId="name">

@@ -40,6 +40,12 @@ function NavbarSystem() {
               <NavDropdown.Item href="#action4">List Tyres</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Tyre Reading</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown title="Trips" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/register-trip">Register Trip</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Trip</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action4">List Trips</NavDropdown.Item>
+            </NavDropdown>
            
           </Nav>
           <Form className="d-flex">

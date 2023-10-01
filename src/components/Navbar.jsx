@@ -28,7 +28,7 @@ function NavbarSystem() {
             </NavDropdown>
             <NavDropdown title="Drivers" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-driver">Register Driver</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Driver</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Drivers</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action4">List Drivers</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Hours Control</NavDropdown.Item>
@@ -42,6 +42,12 @@ function NavbarSystem() {
             </NavDropdown>
             <NavDropdown title="Trips" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-trip">Register Trip</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Trip</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action4">List Trips</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Expenses" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/expense-list">List Expenses</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Trip</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action4">List Trips</NavDropdown.Item>

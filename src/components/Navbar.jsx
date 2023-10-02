@@ -52,6 +52,12 @@ function NavbarSystem() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action4">List Trips</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown title="Customer" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/register-customer">RegisterCustomer</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Customer</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action4">List Customer</NavDropdown.Item>
+            </NavDropdown>
            
           </Nav>
           <Form className="d-flex">

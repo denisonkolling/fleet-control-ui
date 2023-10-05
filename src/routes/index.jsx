@@ -9,6 +9,7 @@ import ListRepairOrder from '../pages/ListRepairOrder';
 import ListVehicle from '../pages/ListVehicle';
 import ListExpense from '../pages/ListExpense';
 import ListTyre from '../pages/ListTyre';
+import ListTyreReading from '../pages/ListTyreReading';
 
 const RoutesApp = () => {
 	return (
@@ -24,6 +25,7 @@ const RoutesApp = () => {
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/expense-list" element={<ListExpense />} />
 				<Route exact path="/tyre-list" element={<ListTyre />} />
+				<Route exact path="/tyre-reading" element={<ListTyreReading />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} /> */}

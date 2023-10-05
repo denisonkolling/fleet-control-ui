@@ -24,6 +24,9 @@ class TyreService {
         return axios.post(API_URL + "/tyre/" + tyre.id, tyre);
     }
 
+    getTyreReading(id){
+        return axios.get(API_URL + "/tyre-reading/" + id);
+    }
 }
 
 export default new TyreService;

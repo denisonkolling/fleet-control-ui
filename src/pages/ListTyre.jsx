@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import expenseService from '../service/expense.service';
+import tyreService from '../service/tyre.service';
 import { Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 
-const ListExpense = () => {
-	const [expenseList, setExpenseList] = useState([]);
+const ListTyre = () => {
+	const [tyreList, setTyreList] = useState([]);
 
 	const [msg, setMsg] = useState('');
 	
@@ -14,10 +14,10 @@ const ListExpense = () => {
 	}, []);
 
 	const init = () => {
-		expenseService
-			.getAllExpense()
+		tyreService
+			.getAllTyre()
 			.then((res) => {
-				setExpenseList(res.data);
+				setTyreList(res.data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -32,20 +32,24 @@ const ListExpense = () => {
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Description</th>
-							<th>Category</th>
-							<th>Value</th>
-							<th>Date</th>
+							<th>Size</th>
+							<th>Manufacturer</th>
+							<th>Model</th>
+							<th>Serial</th>
+							<th>Position</th>
+							<th>Vehicle</th>
 						</tr>
 					</thead>
 					<tbody>
-						{expenseList.map((e) => (
-							<tr key={e.id}>
-								<td>{e.id}</td>
-								<td>{e.description}</td>
-								<td>{e.category}</td>
-								<td>{e.value}</td>
-								<td>{e.date}</td>
+						{tyreList.map((t) => (
+							<tr key={t.id}>
+								<td>{t.id}</td>
+								<td>{t.size}</td>
+								<td>{t.manufacturer}</td>
+								<td>{t.model}</td>
+								<td>{t.serial}</td>
+								<td>{t.position}</td>
+								<td>{t.vehicle}</td>
 							</tr>
 						))}
 					</tbody>
@@ -55,4 +59,4 @@ const ListExpense = () => {
 	);
 };
 
-export default ListExpense;
+export default ListTyre;

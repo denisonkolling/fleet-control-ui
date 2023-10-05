@@ -37,7 +37,7 @@ function NavbarSystem() {
               <NavDropdown.Item href="/register-tyre">Register Tyre</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Tyre</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">List Tyres</NavDropdown.Item>
+              <NavDropdown.Item href="/tyre-list">List Tyres</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Tyre Reading</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Trips" id="navbarScrollingDropdown">

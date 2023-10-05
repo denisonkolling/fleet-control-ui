@@ -9,7 +9,7 @@ class TyreService {
     }
 
     getAllTyre() {
-        return axios.get(API_URL + "/");
+        return axios.get(API_URL + "/tyre");
     }
 
     getTyreById(id) {

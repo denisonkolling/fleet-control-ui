@@ -47,6 +47,7 @@ const ListInvoice = () => {
               <td>{d.number}</td>
               <td>{d.date}</td>
               <td>{d.issuer.firstName}</td>
+              <td>{d.buyer.firstName}</td>
               <td>{d.invoiceTotalValue}</td>
             </tr>
           ))}

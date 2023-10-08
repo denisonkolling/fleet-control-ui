@@ -11,6 +11,7 @@ import ListVehicle from '../pages/ListVehicle';
 import ListExpense from '../pages/ListExpense';
 import ListTyre from '../pages/ListTyre';
 import ListInvoice from '../pages/ListInvoice';
+import ListCustomer from '../pages/ListCustomer';
 import ListTyreReading from '../pages/ListTyreReading';
 
 const RoutesApp = () => {
@@ -30,6 +31,7 @@ const RoutesApp = () => {
 				<Route exact path="/tyre-list" element={<ListTyre />} />
 				<Route exact path="/tyre-reading" element={<ListTyreReading />} />
 				<Route exact path="/invoice-list" element={<ListInvoice />} />
+				<Route exact path="/customer-list" element={<ListCustomer />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} /> */}

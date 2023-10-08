@@ -9,7 +9,7 @@ class CustomerService {
     }
 
     getAllCustomer() {
-        return axios.get(API_URL + "/");
+        return axios.get(API_URL + "/customer");
     }
 
     getCustomerById(id) {

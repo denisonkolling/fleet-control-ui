@@ -37,6 +37,7 @@ const ListInvoice = () => {
             <th>Number</th>
             <th>Date</th>
             <th>Issuer</th>
+            <th>Buyer</th>
             <th>Total Value</th>
           </tr>
         </thead>

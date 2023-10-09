@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import vehicleService from '../service/vehicle.service';
-import { Container } from 'react-bootstrap';
+import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 import NavbarSystem from '../components/Navbar';
 
 const ListVehicle = () => {
@@ -26,31 +27,36 @@ const ListVehicle = () => {
 	return (
 		<>
 			<NavbarSystem />
-			<Container>
-				<Table>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Register Plate</th>
-							<th>Driver</th>
-							<th>Model</th>
-							<th>Year</th>
-							<th>Mileage</th>
-						</tr>
-					</thead>
-					<tbody>
-						{vehicleList.map((v) => (
-							<tr key={v.id}>
-								<td>{v.id}</td>
-								<td>{v.plate}</td>
-								<td>{v.driver}</td>
-								<td>{v.model}</td>
-								<td>{v.year}</td>
-								<td>{v.mileage}</td>
-							</tr>
-						))}
-					</tbody>
-				</Table>
+			<Container className="mt-4 col-md-6">
+				<Card>
+					<CardHeader className="text-center fs-4">Vehicle List</CardHeader>
+					<Container className="p-4">
+						<Table>
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Register Plate</th>
+									<th>Driver</th>
+									<th>Model</th>
+									<th>Year</th>
+									<th>Mileage</th>
+								</tr>
+							</thead>
+							<tbody>
+								{vehicleList.map((v) => (
+									<tr key={v.id}>
+										<td>{v.id}</td>
+										<td>{v.plate}</td>
+										<td>{v.driver}</td>
+										<td>{v.model}</td>
+										<td>{v.year}</td>
+										<td>{v.mileage}</td>
+									</tr>
+								))}
+							</tbody>
+						</Table>
+					</Container>
+				</Card>
 			</Container>
 		</>
 	);

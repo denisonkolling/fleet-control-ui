@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import expenseService from '../service/expense.service';
-import { Container } from 'react-bootstrap';
+import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 const ListExpense = () => {
 	const [expenseList, setExpenseList] = useState([]);
@@ -27,7 +28,10 @@ const ListExpense = () => {
 	return (
 		<>
 			<NavbarSystem />
-			<Container>
+			<Container className="mt-4 col-md-6">
+				<Card>
+					<CardHeader className="text-center fs-4">Expense List</CardHeader>
+					<Container className="p-4">
 				<Table>
 					<thead>
 						<tr>
@@ -50,6 +54,8 @@ const ListExpense = () => {
 						))}
 					</tbody>
 				</Table>
+				</Container>
+				</Card>
 			</Container>
 		</>
 	);

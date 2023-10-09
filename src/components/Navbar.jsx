@@ -48,10 +48,10 @@ function NavbarSystem() {
               <NavDropdown.Item href="#action4">List Trips</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Expenses" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/expense-list">List Expenses</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Register Expense</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Trip</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">List Trips</NavDropdown.Item>
+              <NavDropdown.Item href="/expense-list">List Expenses</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Customer" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-customer">Register Customer</NavDropdown.Item>

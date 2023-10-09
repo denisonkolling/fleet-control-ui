@@ -4,7 +4,6 @@ import invoiceService from '../service/invoice.service';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 
-
 const AddInvoice = () => {
 	const [invoice, setInvoice] = useState({
 		number: '',
@@ -40,9 +39,8 @@ const AddInvoice = () => {
 
 	return (
 		<>
-
-    //TODO:Implementar Formulário de inclusão de Invoice
-	 	
+			<NavbarSystem />
+			//TODO:Implementar Formulário de inclusão de Invoice
 		</>
 	);
 };

@@ -6,7 +6,6 @@ import CardHeader from 'react-bootstrap/esm/CardHeader';
 import Table from 'react-bootstrap/Table';
 
 const ListInvoice = () => {
-
 	const [invoice, setInvoiceList] = useState([]);
 
 	useEffect(() => {
@@ -24,38 +23,43 @@ const ListInvoice = () => {
 			});
 	};
 
-  console.log(invoice);
+	console.log(invoice);
 
 	return (
-    <>
-    <NavbarSystem />
-    <Container>
-      <Table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Number</th>
-            <th>Date</th>
-            <th>Issuer</th>
-            <th>Buyer</th>
-            <th>Total Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {invoice.map((d) => (
-            <tr key={d.id}>
-              <td>{d.id}</td>
-              <td>{d.number}</td>
-              <td>{d.date}</td>
-              <td>{d.issuer.firstName}</td>
-              <td>{d.buyer.firstName}</td>
-              <td>{d.invoiceTotalValue}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
-  </>
+		<>
+			<NavbarSystem />
+			<Container className="mt-4 col-md-6">
+				<Card>
+					<CardHeader className="text-center fs-4">Invoice List</CardHeader>
+					<Container className="p-4">
+						<Table>
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Number</th>
+									<th>Date</th>
+									<th>Issuer</th>
+									<th>Buyer</th>
+									<th>Total Value</th>
+								</tr>
+							</thead>
+							<tbody>
+								{invoice.map((d) => (
+									<tr key={d.id}>
+										<td>{d.id}</td>
+										<td>{d.number}</td>
+										<td>{d.date}</td>
+										<td>{d.issuer.firstName}</td>
+										<td>{d.buyer.firstName}</td>
+										<td>{d.invoiceTotalValue}</td>
+									</tr>
+								))}
+							</tbody>
+						</Table>
+					</Container>
+				</Card>
+			</Container>
+		</>
 	);
 };
 

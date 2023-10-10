@@ -65,6 +65,12 @@ function NavbarSystem() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="/invoice-list">List Invoice</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown title="Products" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/register-product">Register Products</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Find Invoice</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/product-list">List Products</NavDropdown.Item>
+            </NavDropdown>
            
           </Nav>
           <Form className="d-flex">

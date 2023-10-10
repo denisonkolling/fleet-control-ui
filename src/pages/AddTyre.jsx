@@ -55,7 +55,7 @@ const AddTyre = () => {
 									type="number"
 									name="fvehicleId"
 									onChange={handleChange}
-									value={tyre.fvehicleId}
+									value={tyre.vehicleId}
 									required
 								/>
 							</Form.Group>

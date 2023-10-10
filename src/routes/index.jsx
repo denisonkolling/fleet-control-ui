@@ -14,6 +14,8 @@ import ListInvoice from '../pages/ListInvoice';
 import ListCustomer from '../pages/ListCustomer';
 import ListTyreReading from '../pages/ListTyreReading';
 import ListMileage from '../pages/ListMileage';
+import ListProducts from '../pages/ListProduct';
+import AddProduct from '../pages/AddProduct';
 
 const RoutesApp = () => {
 	return (
@@ -26,6 +28,7 @@ const RoutesApp = () => {
 				<Route exact path="/register-vehicle" element={<AddVehicle />} />
 				<Route exact path="/register-tyre" element={<AddTyre />} />
 				<Route exact path="/register-invoice" element={<AddInvoice />} />
+				<Route exact path="/register-product" element={<AddProduct />} />
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/expense-list" element={<ListExpense />} />
@@ -34,6 +37,7 @@ const RoutesApp = () => {
 				<Route exact path="/invoice-list" element={<ListInvoice />} />
 				<Route exact path="/customer-list" element={<ListCustomer />} />
 				<Route exact path="/vehicle-mileage" element={<ListMileage />} />
+				<Route exact path="/product-list" element={<ListProducts />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} /> */}

@@ -28,7 +28,7 @@ const ListProducts = () => {
 			<NavbarSystem />
 			<Container className="mt-4 col-md-6">
 				<Card>
-					<CardHeader className="text-center fs-4">Mileage Control</CardHeader>
+					<CardHeader className="text-center fs-4">Product List</CardHeader>
 					<Container className="p-4">
 						<Table>
 							<thead>

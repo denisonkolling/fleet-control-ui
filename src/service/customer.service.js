@@ -13,7 +13,7 @@ class CustomerService {
     }
 
     getCustomerById(id) {
-        return axios.get(API_URL + "/" + id);
+        return axios.get(API_URL + "/customer/" + id);
     }
 
     deleteCustomer(id) {

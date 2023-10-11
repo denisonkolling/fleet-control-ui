@@ -3,13 +3,20 @@ import { Form, Button, Container, Navbar, Card, Table } from 'react-bootstrap';
 import invoiceService from '../service/invoice.service';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import customerService from '../service/customer.service';
+import productService from '../service/product.service';
 
 const AddInvoice = () => {
+
 	const [invoice, setInvoice] = useState({
 		number: '',
 		date: '',
 		issuerId: '',
+		issuerName: '',
 		buyerId: '',
+		buyerName: '',
 		items: [],
 	});
 
@@ -22,6 +29,7 @@ const AddInvoice = () => {
 	});
 
 	const [itemsList, setItemsList] = useState([]);
+	const [message, setMessage] = useState('');
 
 	const handleChange = (e) => {
 		const value = e.target.value;
@@ -75,6 +83,68 @@ const AddInvoice = () => {
 			});
 	};
 
+
+	async function findIssuer(e) {
+		try {
+			const customerId = e.target.value
+			const { data } = await customerService.getCustomerById(customerId);
+
+			setInvoice((invoice) => ({
+				...invoice,
+				issuerId: data.id,
+				issuerName: data.firstName,
+			}));
+
+			if (data.erro) {
+				setMessage('Error: ' + data.error);
+			}
+		} catch (error) {
+			setMessage('Error: ' + error.message);
+		}
+		return;
+	}
+
+	async function findBuyer(e) {
+		try {
+			const customerId = e.target.value
+			const { data } = await customerService.getCustomerById(customerId);
+
+			setInvoice((invoice) => ({
+				...invoice,
+				buyerId: data.id,
+				buyerName: data.firstName,
+			}));
+
+			if (data.erro) {
+				setMessage('Error: ' + data.error);
+			}
+		} catch (error) {
+			setMessage('Error: ' + error.message);
+		}
+		return;
+	}
+
+	async function findItem(e) {
+		try {
+			const itemId = e.target.value
+			const { data } = await productService.getProductById(itemId);
+
+			setItem((item) => ({
+				...item,
+				productId: data.id,
+				productName: data.name,
+			}));
+console.log(data)
+			if (data.erro) {
+				setMessage('Error: ' + data.error);
+			}
+		} catch (error) {
+			setMessage('Error: ' + error.message);
+		}
+		return;
+	}
+
+
 	return (
 		<>
 			<NavbarSystem />
@@ -110,35 +180,39 @@ const AddInvoice = () => {
 
 							<div className="d-flex justify-content-between">
 								<Form.Group className="mb-3 col-md-1" controlId="name">
-									<Form.Label>Issuer ID</Form.Label>
-									<Form.Control
+									<FontAwesomeIcon icon={faMagnifyingGlass} />
+									<Form.Label>&nbsp;Issuer ID</Form.Label>
+									<Form.Control 
 										type="number"
 										name="issuerId"
 										onChange={handleChange}
 										value={invoice.issuerId}
+										onBlur={findIssuer}
 										required
 									/>
+									
 								</Form.Group>
 
 								<Form.Group className="mb-3 col-md-4" controlId="name">
 									<Form.Label>Issuer Name</Form.Label>
 									<Form.Control
-										type="number"
+										type="text"
 										name="issuerName"
 										onChange={handleChange}
 										value={invoice.issuerName}
 										readOnly
-										required
 									/>
 								</Form.Group>
 
 								<Form.Group className="mb-3 col-md-1" controlId="name">
-									<Form.Label>Buyer ID</Form.Label>
+								<FontAwesomeIcon icon={faMagnifyingGlass} />
+									<Form.Label>&nbsp;Buyer ID</Form.Label>
 									<Form.Control
 										type="number"
 										name="buyerId"
 										onChange={handleChange}
 										value={invoice.buyerId}
+										onBlur={findBuyer}
 										required
 									/>
 								</Form.Group>
@@ -146,7 +220,7 @@ const AddInvoice = () => {
 								<Form.Group className="mb-3 col-md-4" controlId="name">
 									<Form.Label>Buyer Name</Form.Label>
 									<Form.Control
-										type="number"
+										type="text"
 										name="buyerName"
 										onChange={handleChange}
 										value={invoice.buyerName}
@@ -158,13 +232,15 @@ const AddInvoice = () => {
 
 							<div className="d-flex justify-content-between">
 								<>
-									<Form.Group className="col-2">
-										<Form.Label>Product ID</Form.Label>
+									<Form.Group className="col-2" controlId="name">
+									<FontAwesomeIcon icon={faMagnifyingGlass} />
+										<Form.Label>&nbsp;Product ID</Form.Label>
 										<Form.Control
 											type="number"
 											name="productId"
 											value={item.productId}
 											onChange={handleItemChange}
+											onBlur={findItem}
 										/>
 									</Form.Group>
 

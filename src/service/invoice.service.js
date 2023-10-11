@@ -5,7 +5,6 @@ const API_URL = "http://localhost:8080";
 class InvoiceService {
 
     saveInvoice(invoice) {
-        console.log(invoice);
         return axios.post(API_URL + "/invoice", invoice);
     }
 

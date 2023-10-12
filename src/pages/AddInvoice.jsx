@@ -3,13 +3,12 @@ import { Form, Button, Container, Navbar, Card, Table } from 'react-bootstrap';
 import invoiceService from '../service/invoice.service';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import customerService from '../service/customer.service';
 import productService from '../service/product.service';
 
 const AddInvoice = () => {
-
 	const [invoice, setInvoice] = useState({
 		number: '',
 		date: '',
@@ -30,6 +29,7 @@ const AddInvoice = () => {
 
 	const [itemsList, setItemsList] = useState([]);
 	const [message, setMessage] = useState('');
+	const [error, setError] = useState('');
 
 	const handleChange = (e) => {
 		const value = e.target.value;
@@ -64,16 +64,23 @@ const AddInvoice = () => {
 		handleAddItems();
 	};
 
+	const handleClearMessage = () => {
+		setMessage('');
+	}
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		invoiceService
 			.saveInvoice(invoice)
 			.then((res) => {
+				setMessage('Invoice Added Successfuly!');
 				setInvoice({
 					number: '',
 					date: '',
 					issuerId: '',
+					issuerName: '',
 					buyerId: '',
+					buyerName: '',
 					items: [],
 				});
 				setItemsList([]);
@@ -83,10 +90,9 @@ const AddInvoice = () => {
 			});
 	};
 
-
 	async function findIssuer(e) {
 		try {
-			const customerId = e.target.value
+			const customerId = e.target.value;
 			const { data } = await customerService.getCustomerById(customerId);
 
 			setInvoice((invoice) => ({
@@ -95,18 +101,20 @@ const AddInvoice = () => {
 				issuerName: data.firstName,
 			}));
 
+			setError('');
+
 			if (data.erro) {
-				setMessage('Error: ' + data.error);
+				setError('Error: ' + data.error);
 			}
 		} catch (error) {
-			setMessage('Error: ' + error.message);
+			setError('Error: ' + error.message);
 		}
 		return;
 	}
 
 	async function findBuyer(e) {
 		try {
-			const customerId = e.target.value
+			const customerId = e.target.value;
 			const { data } = await customerService.getCustomerById(customerId);
 
 			setInvoice((invoice) => ({
@@ -115,18 +123,20 @@ const AddInvoice = () => {
 				buyerName: data.firstName,
 			}));
 
+			setError('');
+
 			if (data.erro) {
-				setMessage('Error: ' + data.error);
+				setError('Error: ' + data.error);
 			}
 		} catch (error) {
-			setMessage('Error: ' + error.message);
+			setError('Error: ' + error.message);
 		}
 		return;
 	}
 
 	async function findItem(e) {
 		try {
-			const itemId = e.target.value
+			const itemId = e.target.value;
 			const { data } = await productService.getProductById(itemId);
 
 			setItem((item) => ({
@@ -134,16 +144,15 @@ const AddInvoice = () => {
 				productId: data.id,
 				productName: data.name,
 			}));
-console.log(data)
+
 			if (data.erro) {
-				setMessage('Error: ' + data.error);
+				setError('Error: ' + data.error);
 			}
 		} catch (error) {
-			setMessage('Error: ' + error.message);
+			setError('Error: ' + error.message);
 		}
 		return;
 	}
-
 
 	return (
 		<>
@@ -163,6 +172,7 @@ console.log(data)
 										name="number"
 										onChange={handleChange}
 										value={invoice.number}
+										onSelect={handleClearMessage}
 										required
 									/>
 								</Form.Group>
@@ -182,7 +192,7 @@ console.log(data)
 								<Form.Group className="mb-3 col-md-1" controlId="name">
 									<FontAwesomeIcon icon={faMagnifyingGlass} />
 									<Form.Label>&nbsp;Issuer ID</Form.Label>
-									<Form.Control 
+									<Form.Control
 										type="number"
 										name="issuerId"
 										onChange={handleChange}
@@ -190,7 +200,6 @@ console.log(data)
 										onBlur={findIssuer}
 										required
 									/>
-									
 								</Form.Group>
 
 								<Form.Group className="mb-3 col-md-4" controlId="name">
@@ -205,7 +214,7 @@ console.log(data)
 								</Form.Group>
 
 								<Form.Group className="mb-3 col-md-1" controlId="name">
-								<FontAwesomeIcon icon={faMagnifyingGlass} />
+									<FontAwesomeIcon icon={faMagnifyingGlass} />
 									<Form.Label>&nbsp;Buyer ID</Form.Label>
 									<Form.Control
 										type="number"
@@ -233,7 +242,7 @@ console.log(data)
 							<div className="d-flex justify-content-between">
 								<>
 									<Form.Group className="col-2" controlId="name">
-									<FontAwesomeIcon icon={faMagnifyingGlass} />
+										<FontAwesomeIcon icon={faMagnifyingGlass} />
 										<Form.Label>&nbsp;Product ID</Form.Label>
 										<Form.Control
 											type="number"
@@ -323,6 +332,8 @@ console.log(data)
 					</Container>
 				</Card>
 			</Container>
+			{message && <p className="fs-4 text-center text-success">{message}</p>}
+					{error && <p className="fs-4 text-center text-danger">{error}</p>}
 		</>
 	);
 };

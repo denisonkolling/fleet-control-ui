@@ -21,7 +21,6 @@ function NavbarSystem() {
             
             <NavDropdown title="Vehicles" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-vehicle">Register Vehicle</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Vehicle</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/vehicle-list">List Vehicles</NavDropdown.Item>
               <NavDropdown.Item href="/vehicle-service-order">Service Order Control</NavDropdown.Item>

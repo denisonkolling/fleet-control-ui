@@ -4,6 +4,7 @@ import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import NavbarSystem from '../components/Navbar';
+import { Link } from 'react-router-dom';
 
 const ListVehicle = () => {
 	const [vehicleList, setVehicleList] = useState([]);
@@ -40,6 +41,7 @@ const ListVehicle = () => {
 									<th>Model</th>
 									<th>Year</th>
 									<th>Mileage</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -51,6 +53,13 @@ const ListVehicle = () => {
 										<td>{v.model}</td>
 										<td>{v.year}</td>
 										<td>{v.mileage}</td>
+										<td>
+											<Link
+												to={`/vehicle-edit/${v.id}`}
+												className="btn btn-sm btn-primary px-4 m-1">
+												Edit
+											</Link>
+										</td>
 									</tr>
 								))}
 							</tbody>

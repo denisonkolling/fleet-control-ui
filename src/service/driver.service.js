@@ -9,7 +9,7 @@ class DriverService {
     }
 
     getAllDriver() {
-        return axios.get(API_URL + "/");
+        return axios.get(API_URL + "/driver");
     }
 
     getDriverById(id) {

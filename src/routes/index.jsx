@@ -15,6 +15,7 @@ import ListCustomer from '../pages/ListCustomer';
 import ListTyreReading from '../pages/ListTyreReading';
 import ListMileage from '../pages/ListMileage';
 import ListProducts from '../pages/ListProduct';
+import ListDriver from '../pages/ListDriver';
 import AddProduct from '../pages/AddProduct';
 import EditVehicle from '../pages/EditVehicle';
 
@@ -40,6 +41,7 @@ const RoutesApp = () => {
 				<Route exact path="/customer-list" element={<ListCustomer />} />
 				<Route exact path="/vehicle-mileage" element={<ListMileage />} />
 				<Route exact path="/product-list" element={<ListProducts />} />
+				<Route exact path="/driver-list" element={<ListDriver />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} /> */}

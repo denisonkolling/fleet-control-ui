@@ -30,7 +30,7 @@ function NavbarSystem() {
               <NavDropdown.Item href="/register-driver">Register Driver</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Find Drivers</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">List Drivers</NavDropdown.Item>
+              <NavDropdown.Item href="/driver-list">List Drivers</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Hours Control</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Tyres" id="navbarScrollingDropdown">

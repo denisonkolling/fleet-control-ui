@@ -60,16 +60,17 @@ const AddInvoice = () => {
 		setInvoice({ ...invoice, items: itemsList });
 	};
 
-	const handleAddItemsInvoice = () => {
-		handleAddItems();
-	};
+	// const handleAddItemsInvoice = () => {
+	// 	handleAddItems();
+	// };
 
 	const handleClearMessage = () => {
 		setMessage('');
-	}
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		handleAddItems();
 		invoiceService
 			.saveInvoice(invoice)
 			.then((res) => {
@@ -144,6 +145,8 @@ const AddInvoice = () => {
 				productId: data.id,
 				productName: data.name,
 			}));
+
+			setError('');
 
 			if (data.erro) {
 				setError('Error: ' + data.error);
@@ -315,14 +318,6 @@ const AddInvoice = () => {
 									))}
 								</tbody>
 							</Table>
-							<div className="d-flex justify-content-end mb-3">
-								<Button
-									variant="primary"
-									type="button"
-									onClick={handleAddItemsInvoice}>
-									Save Items
-								</Button>
-							</div>
 							<div className="d-flex justify-content-end">
 								<Button variant="primary" type="submit">
 									Save Invoice
@@ -333,7 +328,7 @@ const AddInvoice = () => {
 				</Card>
 			</Container>
 			{message && <p className="fs-4 text-center text-success">{message}</p>}
-					{error && <p className="fs-4 text-center text-danger">{error}</p>}
+			{error ? <p className="fs-4 text-center text-danger">{error}</p> : null}
 		</>
 	);
 };

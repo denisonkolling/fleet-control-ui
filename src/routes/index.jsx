@@ -18,6 +18,7 @@ import ListProducts from '../pages/ListProduct';
 import ListDriver from '../pages/ListDriver';
 import AddProduct from '../pages/AddProduct';
 import EditVehicle from '../pages/EditVehicle';
+import FindInvoice from '../pages/FindInvoice';
 
 const RoutesApp = () => {
 	return (
@@ -42,6 +43,7 @@ const RoutesApp = () => {
 				<Route exact path="/vehicle-mileage" element={<ListMileage />} />
 				<Route exact path="/product-list" element={<ListProducts />} />
 				<Route exact path="/driver-list" element={<ListDriver />} />
+				<Route exact path="/invoice-find" element={<FindInvoice />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} /> */}

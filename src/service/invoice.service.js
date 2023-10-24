@@ -13,7 +13,11 @@ class InvoiceService {
     }
 
     getInvoiceById(id) {
-        return axios.get(API_URL + "/" + id);
+        return axios.get(API_URL + "/invoice" + id);
+    }
+
+    getInvoiceByNumber(number) {
+        return axios.get(API_URL + "/invoice/number/" + number);
     }
 
     deleteInvoice(id) {

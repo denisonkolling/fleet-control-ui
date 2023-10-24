@@ -60,7 +60,7 @@ function NavbarSystem() {
             </NavDropdown>
             <NavDropdown title="Invoice" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-invoice">Register Invoice</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Invoice</NavDropdown.Item>
+              <NavDropdown.Item href="/invoice-find">Find Invoice</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/invoice-list">List Invoice</NavDropdown.Item>
             </NavDropdown>

@@ -35,7 +35,7 @@ const AddDriver = () => {
 				});
 			})
 			.catch((error) => {
-				console.log(error);
+				setError('Error: ' + error.message);
 			});
 	};
 

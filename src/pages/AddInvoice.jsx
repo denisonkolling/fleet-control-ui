@@ -55,12 +55,8 @@ const AddInvoice = () => {
 		});
 	};
 
-	const handleAddItems = () => {
-		setInvoice({ ...invoice, items: itemsList });
-	};
-
 	const handleAddItemsInvoice = () => {
-		handleAddItems();
+		setInvoice({ ...invoice, items: itemsList });
 	};
 
 	const handleClearMessage = () => {

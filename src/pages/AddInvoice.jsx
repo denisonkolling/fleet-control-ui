@@ -60,10 +60,6 @@ const AddInvoice = () => {
 		setInvoice({ ...invoice, items: itemsList });
 	};
 
-	// const handleAddItemsInvoice = () => {
-	// 	handleAddItems();
-	// };
-
 	const handleClearMessage = () => {
 		setMessage('');
 	};

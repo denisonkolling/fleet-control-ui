@@ -48,7 +48,6 @@ const AddInvoice = () => {
 		});
 		setItemsList([...itemsList, item]);
 		setItem({
-			id: 0,
 			productId: '',
 			productName: '',
 			quantity: '',
@@ -60,13 +59,16 @@ const AddInvoice = () => {
 		setInvoice({ ...invoice, items: itemsList });
 	};
 
+	const handleAddItemsInvoice = () => {
+		handleAddItems();
+	};
+
 	const handleClearMessage = () => {
 		setMessage('');
-	};
+	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		handleAddItems();
 		invoiceService
 			.saveInvoice(invoice)
 			.then((res) => {
@@ -259,6 +261,7 @@ const AddInvoice = () => {
 											name="productName"
 											value={item.productName}
 											onChange={handleItemChange}
+											readOnly
 										/>
 									</Form.Group>
 
@@ -314,6 +317,14 @@ const AddInvoice = () => {
 									))}
 								</tbody>
 							</Table>
+							<div className="d-flex justify-content-end mb-3">
+								<Button
+									variant="primary"
+									type="button"
+									onClick={handleAddItemsInvoice}>
+									Save Items
+								</Button>
+							</div>
 							<div className="d-flex justify-content-end">
 								<Button variant="primary" type="submit">
 									Save Invoice

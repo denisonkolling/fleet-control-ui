@@ -13,7 +13,7 @@ class DriverService {
     }
 
     getDriverById(id) {
-        return axios.get(API_URL + "/" + id);
+        return axios.get(API_URL + "/driver/" + id);
     }
 
     deleteDriver(id) {

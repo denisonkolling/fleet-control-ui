@@ -19,6 +19,7 @@ import ListDriver from '../pages/ListDriver';
 import AddProduct from '../pages/AddProduct';
 import EditVehicle from '../pages/EditVehicle';
 import FindInvoice from '../pages/FindInvoice';
+import EditDriver from '../pages/EditDriver';
 
 const RoutesApp = () => {
 	return (
@@ -35,6 +36,7 @@ const RoutesApp = () => {
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/vehicle-edit/:id" element={<EditVehicle />} />
+				<Route exact path="/driver-edit/:id" element={<EditDriver />} />
 				<Route exact path="/expense-list" element={<ListExpense />} />
 				<Route exact path="/tyre-list" element={<ListTyre />} />
 				<Route exact path="/tyre-reading" element={<ListTyreReading />} />

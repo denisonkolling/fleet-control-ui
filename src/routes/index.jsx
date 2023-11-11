@@ -20,6 +20,7 @@ import AddProduct from '../pages/AddProduct';
 import EditVehicle from '../pages/EditVehicle';
 import FindInvoice from '../pages/FindInvoice';
 import EditDriver from '../pages/EditDriver';
+import AddDrivingHours from '../pages/AddDrivingHours';
 
 const RoutesApp = () => {
 	return (
@@ -33,6 +34,7 @@ const RoutesApp = () => {
 				<Route exact path="/register-tyre" element={<AddTyre />} />
 				<Route exact path="/register-invoice" element={<AddInvoice />} />
 				<Route exact path="/register-product" element={<AddProduct />} />
+				<Route exact path="/register-driving-hours" element={<AddDrivingHours />} />
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/vehicle-edit/:id" element={<EditVehicle />} />

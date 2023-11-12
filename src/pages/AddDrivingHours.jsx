@@ -5,26 +5,24 @@ import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import customerService from '../service/customer.service';
-import productService from '../service/product.service';
+import driverService from '../service/driver.service';
+import drivingHoursService from '../service/drivingHours.service';
 
 const AddDrivingHours = () => {
-	const [invoice, setInvoice] = useState({
-		number: '',
-		date: '',
-		issuerId: '',
-		issuerName: '',
-		buyerId: '',
-		buyerName: '',
-		items: [],
+	const [drivingHours, setDrivingHours] = useState({
+		driver: [],
+		startDrivingTime: '',
+		endDrivingTime: '',
 	});
 
-	const [item, setItem] = useState({
-		id: 0,
-		productId: '',
-		productName: '',
-		quantity: '',
-		unitPrice: '',
+	const [driver, setDriver] = useState({
+		id: '',
+		firstName: '',
+		lastName: '',
+		birthday: '',
+		licenseId: '',
+		expiryDate: '',
+		licenseClass: '',
 	});
 
 	const [itemsList, setItemsList] = useState([]);
@@ -33,31 +31,31 @@ const AddDrivingHours = () => {
 
 	const handleChange = (e) => {
 		const value = e.target.value;
-		setInvoice({ ...invoice, [e.target.name]: value });
+		setDrivingHours({ ...drivingHours, [e.target.name]: value });
 	};
 
-	const handleItemChange = (e) => {
+	const handleDriverChange = (e) => {
 		const value = e.target.value;
-		setItem({ ...item, [e.target.name]: value });
+		setDriver({ ...driver, [e.target.name]: value });
 	};
 
-	const handleAddItem = () => {
-		setItem({
-			...item,
-			id: itemsList.length + 1,
-		});
-		setItemsList([...itemsList, item]);
-		setItem({
-			productId: '',
-			productName: '',
-			quantity: '',
-			unitPrice: '',
-		});
-	};
+	// const handleAddItem = () => {
+	// 	setItem({
+	// 		...item,
+	// 		id: itemsList.length + 1,
+	// 	});
+	// 	setItemsList([...itemsList, item]);
+	// 	setItem({
+	// 		productId: '',
+	// 		productName: '',
+	// 		quantity: '',
+	// 		unitPrice: '',
+	// 	});
+	// };
 
-	const handleAddItemsInvoice = () => {
-		setInvoice({ ...invoice, items: itemsList });
-	};
+	// const handleAddItemsInvoice = () => {
+	// 	setInvoice({ ...invoice, items: itemsList });
+	// };
 
 	const handleClearMessage = () => {
 		setMessage('');
@@ -85,59 +83,20 @@ const AddDrivingHours = () => {
 			});
 	};
 
-	async function findIssuer(e) {
+	async function findDriver(e) {
 		try {
-			const customerId = e.target.value;
-			const { data } = await customerService.getCustomerById(customerId);
+			const driverId = e.target.value;
+			const { data } = await driverService.getDriverById(driverId);
 
-			setInvoice((invoice) => ({
-				...invoice,
-				issuerId: data.id,
-				issuerName: data.firstName,
-			}));
-
-			setError('');
-
-			if (data.erro) {
-				setError('Error: ' + data.error);
-			}
-		} catch (error) {
-			setError('Error: ' + error.message);
-		}
-		return;
-	}
-
-	async function findBuyer(e) {
-		try {
-			const customerId = e.target.value;
-			const { data } = await customerService.getCustomerById(customerId);
-
-			setInvoice((invoice) => ({
-				...invoice,
-				buyerId: data.id,
-				buyerName: data.firstName,
-			}));
-
-			setError('');
-
-			if (data.erro) {
-				setError('Error: ' + data.error);
-			}
-		} catch (error) {
-			setError('Error: ' + error.message);
-		}
-		return;
-	}
-
-	async function findItem(e) {
-		try {
-			const itemId = e.target.value;
-			const { data } = await productService.getProductById(itemId);
-
-			setItem((item) => ({
-				...item,
-				productId: data.id,
-				productName: data.name,
+			setDriver((driver) => ({
+				...driver,
+				id: data.id,
+				firstName: data.firstName,
+				lastName: data.lastName,
+				birthday: data.birthday,
+				licenseId: data.licenseId,
+				expiryDate: data.expiryDate,
+				licenseClass: data.licenseClass,
 			}));
 
 			setError('');
@@ -167,10 +126,10 @@ const AddDrivingHours = () => {
 									<Form.Label>&nbsp;Driver ID</Form.Label>
 									<Form.Control
 										type="number"
-										name="issuerId"
+										name="driverId"
 										onChange={handleChange}
-										value={invoice.issuerId}
-										onBlur={findIssuer}
+										value={drivingHours.driver}
+										onBlur={findDriver}
 										required
 									/>
 								</Form.Group>
@@ -179,14 +138,14 @@ const AddDrivingHours = () => {
 									<Form.Label>Name</Form.Label>
 									<Form.Control
 										type="text"
-										name="issuerName"
+										name="driverName"
 										onChange={handleChange}
-										value={invoice.issuerName}
+										value={drivingHours.driver.firstName}
 										readOnly
 									/>
 								</Form.Group>
 
-								<Form.Group className="mb-3 col-md-2" controlId="name">
+								{/* <Form.Group className="mb-3 col-md-2" controlId="name">
 									<FontAwesomeIcon icon={faMagnifyingGlass} />
 									<Form.Label>&nbsp;Date</Form.Label>
 									<Form.Control
@@ -208,12 +167,12 @@ const AddDrivingHours = () => {
 										readOnly
 										required
 									/>
-								</Form.Group>
+								</Form.Group> */}
 							</div>
 
 							<div className="d-flex justify-content-between">
 								<>
-									<Form.Group className="col-2" controlId="name">
+									{/* <Form.Group className="col-2" controlId="name">
 										<FontAwesomeIcon icon={faMagnifyingGlass} />
 										<Form.Label>&nbsp;ID</Form.Label>
 										<Form.Control
@@ -223,26 +182,25 @@ const AddDrivingHours = () => {
 											onChange={handleItemChange}
 											onBlur={findItem}
 										/>
-									</Form.Group>
+									</Form.Group> */}
 
 									<Form.Group className="col-3">
 										<Form.Label>Start Time</Form.Label>
 										<Form.Control
-											type="text"
-											name="productName"
-											value={item.productName}
-											onChange={handleItemChange}
-											readOnly
+											type="date"
+											name="startDrivingTime"
+											value={drivingHours.startDrivingTime}
+											onChange={handleChange}
 										/>
 									</Form.Group>
 
 									<Form.Group className="col-2">
 										<Form.Label>End Time</Form.Label>
 										<Form.Control
-											type="number"
-											name="quantity"
-											value={item.quantity}
-											onChange={handleItemChange}
+											type="date"
+											name="startDrivingTime"
+											value={drivingHours.startDrivingTime}
+											onChange={handleChange}
 										/>
 									</Form.Group>
 								</>
@@ -251,7 +209,8 @@ const AddDrivingHours = () => {
 									className="col23 m-4"
 									variant="primary"
 									type="button"
-									onClick={handleAddItem}>
+									// onClick={handleAddItem}
+									>
 									Create Register
 								</Button>
 							</div>
@@ -266,7 +225,7 @@ const AddDrivingHours = () => {
 									</tr>
 								</thead>
 								<tbody>
-									{itemsList.map((item) => (
+									{/* {itemsList.map((item) => (
 										<tr key={item.id}>
 											<td>{item.productId}</td>
 											<td>{item.productName}</td>
@@ -274,16 +233,16 @@ const AddDrivingHours = () => {
 											<td>{item.unitPrice}</td>
 											<td>{item.unitPrice * item.quantity}</td>
 										</tr>
-									))}
+									))} */}
 								</tbody>
 							</Table>
 							<div className="d-flex justify-content-end mb-3">
-								<Button
+								{/* <Button
 									variant="primary"
 									type="button"
 									onClick={handleAddItemsInvoice}>
 									Save Registers
-								</Button>
+								</Button> */}
 							</div>
 							<div className="d-flex justify-content-end">
 								<Button variant="primary" type="submit">

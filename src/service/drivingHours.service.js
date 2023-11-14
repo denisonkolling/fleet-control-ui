@@ -13,7 +13,7 @@ class DrivingHoursService {
     }
 
     getDrivingHoursById(id) {
-        return axios.get(API_URL + "/driving-hours" + id);
+        return axios.get(API_URL + "/driving-hours/" + id);
     }
 
     getDrivingHoursByDriver(driverId) {

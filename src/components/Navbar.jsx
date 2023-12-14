@@ -28,7 +28,7 @@ function NavbarSystem() {
             </NavDropdown>
             <NavDropdown title="Drivers" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-driver">Register Driver</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Drivers</NavDropdown.Item>
+              <NavDropdown.Item href="/find-driver">Find Drivers</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/driver-list">List Drivers</NavDropdown.Item>
               <NavDropdown.Item href="/register-driving-hours">Driving Hours</NavDropdown.Item>

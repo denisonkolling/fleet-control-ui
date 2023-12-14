@@ -9,7 +9,7 @@ import moment from 'moment';
 const EditDriver = () => {
 	const [driver, setDriver] = useState({
 		firstName: '',
-		LastName: '',
+		lastName: '',
 		birthday: '',
 		licenseId: '',
 		licenseClass: '',
@@ -46,7 +46,7 @@ const EditDriver = () => {
 			.then((res) => {
 				setDriver({
 					firstName: '',
-					LastName: '',
+					lastName: '',
 					birthday: '',
 					licenseId: '',
 					licenseClass: '',

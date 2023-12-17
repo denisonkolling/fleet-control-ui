@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import mileageService from '../service/mileage.service';
+import moment from 'moment';
 
 const ListMileage = () => {
 	const [mileageReadingList, setMileageReadingList] = useState([]);
@@ -59,7 +60,7 @@ const ListMileage = () => {
 								{mileageReadingList.map((m) => (
 									<tr key={m.id}>
 										<td>{m.id}</td>
-										<td>{m.readingDate}</td>
+										<td>{moment(m.readingDate).format("DD/MM/YYYY HH:mm")}</td>										
 										<td>{m.readingMiles}</td>
 										<td>{m.vehicle.plate}</td>
 									</tr>

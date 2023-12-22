@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const FindDriver = () => {
-
 	const [driver, setDriver] = useState({
 		firstName: '',
 		lastName: '',
@@ -18,10 +17,9 @@ const FindDriver = () => {
 		expiryDate: '',
 	});
 
-  const [search, setSearch] = useState('')
+	const [search, setSearch] = useState('');
 
 	const [msg, setMsg] = useState('');
-
 
 	const handleChange = (e) => {
 		const value = e.target.value;
@@ -33,7 +31,7 @@ const FindDriver = () => {
 
 		driverService
 			.getDriverByName(search)
-      .then((res) => {
+			.then((res) => {
 				setDriver(res.data);
 			})
 			.catch((error) => {
@@ -49,16 +47,35 @@ const FindDriver = () => {
 					<CardHeader className="text-center fs-4">Find Driver</CardHeader>
 					<Container className="p-4">
 						<Form onSubmit={handleSubmit}>
-							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>First Name</Form.Label>
+							<Form.Label>
+								<FontAwesomeIcon icon={faMagnifyingGlass} />
+								&nbsp;Driver Name
 								<Form.Control
 									type="text"
-									name="firstName"
-									onChange={handleChange}
-									value={driver.firstName}
-									readOnly
+									value={search}
+									onChange={(event) => setSearch(event.target.value)}
 								/>
-							</Form.Group>
+							</Form.Label>
+
+							<Button variant="primary" type="submit" className="ms-2">
+								Search
+							</Button>
+						</Form>
+						<Form onSubmit={handleSubmit}>
+							<div>
+								<Form.Group className="mb-3" controlId="name">
+									<Form.Label className="col-4">First Name</Form.Label>
+									<Form.Control
+										className="col-4"
+										type="text"
+										name="firstName"
+										onChange={handleChange}
+										value={driver.firstName}
+										readOnly
+									/>
+								</Form.Group>
+							</div>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Last Name</Form.Label>
 								<Form.Control
@@ -75,7 +92,7 @@ const FindDriver = () => {
 									type="date"
 									name="birthday"
 									onChange={handleChange}
-									value={moment(driver.birthday).format('L')}
+									value={driver.birthday}
 									readOnly
 								/>
 							</Form.Group>
@@ -105,27 +122,10 @@ const FindDriver = () => {
 									type="date"
 									name="expiryDate"
 									onChange={handleChange}
-									value={moment(driver.expiryDate).format('L')}
+									value={driver.expiryDate}
 									readOnly
 								/>
 							</Form.Group>
-						</Form>
-
-						<Form onSubmit={handleSubmit} className="">
-							<Form.Label>
-								<FontAwesomeIcon icon={faMagnifyingGlass} />
-								&nbsp;Driver Name
-								<Form.Control
-									type="text"
-									value={search}
-									onChange={(event) => setSearch(event.target.value)}
-								/>
-							</Form.Label>
-
-							<Button variant="primary" type="submit" className="ms-2">
-								Search
-							</Button>
-              
 						</Form>
 					</Container>
 				</Card>

@@ -35,24 +35,41 @@ const ListRepairOrder = () => {
 						gap: '1rem',
 						alignItems: 'flex-start',
 					}}>
-					{repairOrderList.map((o) => (
-						<CardGroup key={o.workOrderId} className="m-2">
-							<Card style={{backgroundColor: "#F8F9FA"}}>
+					{repairOrderList.map((serviceOrder) => (
+						<CardGroup key={serviceOrder.id} className="m-2">
+							<Card style={{ backgroundColor: '#F8F9FA' }}>
 								<div>
 									<div className="d-flex justify-content-between align-items-baseline fw-normal mb-3 m-2">
-										<Card.Title className="">Service Order {o.workOrderId}</Card.Title>
-										<h5 className="">{o.plate}</h5>
+										<Card.Title className="">
+											Service Order {serviceOrder.id}
+										</Card.Title>
+										<h5 className="">{serviceOrder.plate}</h5>
 									</div>
-									<div className='m-2'>
-									<span>Open Date {moment(o.openDate).format("DD/MM/YYYY HH:mm")}</span>
-									<br />
-									<span>
-										Service {o.service.serviceName} U$ {o.service.servicePrice}
-									</span>
-									<br />
-									<span>
-										Part {o.part.partName} U$ {o.part.partPrice}
-									</span>
+									<div className="m-2">
+										<span>
+											Open Date{' '}
+											{moment(serviceOrder.openDate).format('DD/MM/YYYY HH:mm')}
+										</span>
+										<br />
+										<span>
+											Service
+											{serviceOrder.services.map((services) => (
+												<>
+													<span>{services.name}</span>
+													<span>U$ {services.unitPrice}</span>
+												</>
+											))}
+										</span>
+										<br />
+										<span>
+											Part
+											{serviceOrder.parts.map((parts) => (
+												<>
+													<span>{parts.name}</span>
+													<span>U$ {parts.unitPrice}</span>
+												</>
+											))} 
+											</span>
 									</div>
 								</div>
 							</Card>

@@ -16,6 +16,10 @@ class VehicleService {
         return axios.get(API_URL + "/vehicle/" + id);
     }
 
+    getVehicleByPlate(plate) {
+        return axios.get(API_URL + "/vehicle/plate/" + plate);
+    }
+
     deleteVehicle(id) {
         return axios.delete(API_URL + "/vehicle/" + id);
     }

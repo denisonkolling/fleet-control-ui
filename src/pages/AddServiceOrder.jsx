@@ -47,6 +47,11 @@ const AddServiceOrder = () => {
 		setInvoice({ ...invoice, [e.target.name]: value });
 	};
 
+	const handleVehicleChange = (e) => {
+		const value = e.target.value;
+		setVehicle({ ...vehicle, [e.target.name]: value });
+	};
+
 	const handleItemChange = (e) => {
 		const value = e.target.value;
 		setItem({ ...item, [e.target.name]: value });
@@ -99,13 +104,9 @@ const AddServiceOrder = () => {
 	async function findVehicle(e) {
 		try {
 			const vehiclePlate = e.target.value;
-			const { data } = await vehicleService.getVehicleByPlate(plate);
+			const { data } = await vehicleService.getVehicleByPlate(vehiclePlate);
 
-			setInvoice((invoice) => ({
-				...invoice,
-				issuerId: data.id,
-				issuerName: data.firstName,
-			}));
+			setVehicle(data);
 
 			setError('');
 
@@ -187,11 +188,11 @@ const AddServiceOrder = () => {
 									<FontAwesomeIcon icon={faMagnifyingGlass} />
 									<Form.Label>&nbsp;Plate</Form.Label>
 									<Form.Control
-										type="number"
-										name="issuerId"
-										onChange={handleChange}
-										value={invoice.issuerId}
-										onBlur={findIssuer}
+										type="text"
+										name="plate"
+										onChange={handleVehicleChange}
+										value={vehicle.plate}
+										onBlur={findVehicle}
 										required
 									/>
 								</Form.Group>
@@ -211,9 +212,9 @@ const AddServiceOrder = () => {
 									<Form.Label>Driver</Form.Label>
 									<Form.Control
 										type="text"
-										name="issuerName"
-										onChange={handleChange}
-										value={invoice.issuerName}
+										name="driverName"
+										onChange={handleVehicleChange}
+										value={vehicle.driver}
 										readOnly
 									/>
 								</Form.Group>
@@ -224,7 +225,7 @@ const AddServiceOrder = () => {
 									<>
 										<Form.Group className="col-2" controlId="name">
 											<FontAwesomeIcon icon={faMagnifyingGlass} />
-											<Form.Label>&nbsp;Part ID</Form.Label>
+											<Form.Label>&nbsp;Service ID</Form.Label>
 											<Form.Control
 												type="number"
 												name="productId"

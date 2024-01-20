@@ -32,6 +32,10 @@ const AddVehicle = () => {
 		setVehicle({ ...vehicle, [e.target.name]: value });
 	};
 
+	const clearMessageError = (e) => {
+		setMessage('');
+		setError('');
+	}
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -63,6 +67,7 @@ const AddVehicle = () => {
 									type="text"
 									name="plate"
 									onChange={handleChange}
+									onBlur={clearMessageError}
 									value={vehicle.plate}
 									required
 								/>

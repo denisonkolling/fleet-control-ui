@@ -1,31 +1,29 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080"; 
-
 class DriverService {
 
     saveDriver(driver) {
-        return axios.post(API_URL + "/driver", driver);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/driver`, driver);
     }
 
     getAllDriver() {
-        return axios.get(API_URL + "/driver");
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/driver`);
     }
 
     getDriverById(id) {
-        return axios.get(API_URL + "/driver/" + id);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/driver/` + id);
     }
 
     getDriverByName(name) {
-        return axios.get(API_URL + "/driver/name/" + name);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/driver/name/` + name);
     }
 
     deleteDriver(id) {
-        return axios.delete(API_URL + "/driver/" + id);
+        return axios.delete(`${import.meta.env.VITE_API_BASE_URL}/driver/` + id);
     }
 
     editDriver(driver) {
-        return axios.post(API_URL + "/driver/" + driver.id, driver);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/driver/` + driver.id, driver);
     }
 
 }

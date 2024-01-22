@@ -1,31 +1,29 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080"; 
-
 class InvoiceService {
 
     saveInvoice(invoice) {
-        return axios.post(API_URL + "/invoice", invoice);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/invoice`, invoice);
     }
 
     getAllInvoice() {
-        return axios.get(API_URL + "/invoice");
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/invoice`);
     }
 
     getInvoiceById(id) {
-        return axios.get(API_URL + "/invoice" + id);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/invoice` + id);
     }
 
     getInvoiceByNumber(number) {
-        return axios.get(API_URL + "/invoice/number/" + number);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/invoice/number/` + number);
     }
 
     deleteInvoice(id) {
-        return axios.delete(API_URL + "/invoice/" + id);
+        return axios.delete(`${import.meta.env.VITE_API_BASE_URL}/invoice/` + id);
     }
 
     editInvoice(invoice) {
-        return axios.post(API_URL + "/invoice/" + invoice.id, invoice);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/invoice/` + invoice.id, invoice);
     }
 
 }

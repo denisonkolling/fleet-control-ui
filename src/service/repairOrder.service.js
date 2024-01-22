@@ -1,27 +1,25 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:8080"; 
+import axios from "axios"; 
 
 class RepairOrderService {
 
     saveRepairOrder(repairOrder) {
-        return axios.post(API_URL + "/repair-order", repairOrder);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/repair-order`, repairOrder);
     }
 
     getAllRepairOrder() {
-        return axios.get(API_URL + "/repair-order");
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/repair-order`);
     }
 
     getRepairOrderById(id) {
-        return axios.get(API_URL + "/" + id);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/` + id);
     }
 
     deleteRepairOrder(id) {
-        return axios.delete(API_URL + "/repair-order/" + id);
+        return axios.delete(`${import.meta.env.VITE_API_BASE_URL}/repair-order/` + id);
     }
 
     editRepairOrder(repairOrder) {
-        return axios.post(API_URL + "/repair-order/" + repairOrder.id, repairOrder);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/repair-order/` + repairOrder.id, repairOrder);
     }
 
 }

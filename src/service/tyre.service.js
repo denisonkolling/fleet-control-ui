@@ -1,31 +1,29 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080"; 
-
 class TyreService {
 
     saveTyre(tyre) {
-        return axios.post(API_URL + "/tyre", tyre);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/tyre`, tyre);
     }
 
     getAllTyre() {
-        return axios.get(API_URL + "/tyre");
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/tyre`);
     }
 
     getTyreById(id) {
-        return axios.get(API_URL + "/" + id);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/` + id);
     }
 
     deleteTyre(id) {
-        return axios.delete(API_URL + "/tyre/" + id);
+        return axios.delete(`${import.meta.env.VITE_API_BASE_URL}/tyre/` + id);
     }
 
     editTyre(tyre) {
-        return axios.post(API_URL + "/tyre/" + tyre.id, tyre);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/tyre/` + tyre.id, tyre);
     }
 
     getTyreReading(id){
-        return axios.get(API_URL + "/tyre-reading/" + id);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/tyre-reading/` + id);
     }
 }
 

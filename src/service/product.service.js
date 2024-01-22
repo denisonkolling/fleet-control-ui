@@ -1,27 +1,25 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080"; 
-
 class ProductService {
 
     saveProduct(product) {
-        return axios.post(API_URL + "/product", product);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/product`, product);
     }
 
     getAllProduct() {
-        return axios.get(API_URL + "/product");
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/product`);
     }
 
     getProductById(id) {
-        return axios.get(API_URL + "/product/" + id);
+        return axios.get(`${import.meta.env.VITE_API_BASE_URL}/product/` + id);
     }
 
     deleteProduct(id) {
-        return axios.delete(API_URL + "/product/" + id);
+        return axios.delete(`${import.meta.env.VITE_API_BASE_URL}/product/` + id);
     }
 
     editProduct(product) {
-        return axios.post(API_URL + "/product/" + product.id, product);
+        return axios.post(`${import.meta.env.VITE_API_BASE_URL}/product/` + product.id, product);
     }
 
 }

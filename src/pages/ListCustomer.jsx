@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import customerService from '../service/customer.service';
+import customerService from '../service/customer';
 import { Button, Container, Form, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';

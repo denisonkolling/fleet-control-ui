@@ -10,9 +10,18 @@ const AddTyre = () => {
 		manufacturer: '',
 		serial: '',
 		model: '',
+		position: '',
 		size: '',
 		vehicle: '',
 	});
+
+	const [message, setMessage] = useState('');
+	const [error, setError] = useState('');
+
+	const clearMessageError = (e) => {
+		setMessage('');
+		setError('');
+	}
 
 	const handleChange = (e) => {
 		const value = e.target.value;
@@ -31,10 +40,13 @@ const AddTyre = () => {
 					serial: '',
 					model: '',
 					size: '',
+					position: '',
 					vehicle: '',
 				});
+				setMessage('Vehicle added successfully!');
 			})
 			.catch((error) => {
+				setError('Something went wrong on server!');
 				console.log(error);
 			});
 	};
@@ -53,9 +65,10 @@ const AddTyre = () => {
 								<Form.Label>Vehicle Id</Form.Label>
 								<Form.Control
 									type="number"
-									name="fvehicleId"
+									name="vehicleId"
 									onChange={handleChange}
 									value={tyre.vehicleId}
+									onBlur={clearMessageError}
 									required
 								/>
 							</Form.Group>
@@ -72,7 +85,7 @@ const AddTyre = () => {
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Serial</Form.Label>
 								<Form.Control
-									type="date"
+									type="text"
 									name="serial"
 									onChange={handleChange}
 									value={tyre.serial}
@@ -102,7 +115,7 @@ const AddTyre = () => {
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Position</Form.Label>
 								<Form.Control
-									type="date"
+									type="text"
 									name="position"
 									onChange={handleChange}
 									value={tyre.position}
@@ -112,7 +125,7 @@ const AddTyre = () => {
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Vehicle</Form.Label>
 								<Form.Control
-									type="date"
+									type="text"
 									name="vehicle"
 									onChange={handleChange}
 									value={tyre.vehicle}
@@ -128,6 +141,8 @@ const AddTyre = () => {
 						</Form>
 					</Container>
 				</Card>
+				{message && <p className="fs-4 mt-2 text-center text-success">{message}</p>}
+				{error && <p className="fs-4 mt-2 text-center text-danger">{error}</p>}
 			</Container>
 		</>
 	);

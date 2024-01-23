@@ -129,7 +129,16 @@ const AddCustomer = () => {
 									required
 								/>
 							</Form.Group>
-							
+							<Form.Group className="mb-3" controlId="name">
+								<Form.Label>Number</Form.Label>
+								<Form.Control
+									type="text"
+									name="number"
+									onChange={handleAddressChange}
+									value={customer.address.number}
+									required
+								/>
+							</Form.Group>
               <Form.Group className="mb-3" controlId="name">
 								<Form.Label>City</Form.Label>
 								<Form.Control

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import invoiceService from '../service/invoice.service';
+import invoiceService from '../service/invoice';
 import NavbarSystem from '../components/Navbar';
 import { Card, CardGroup, Container, ModalTitle } from 'react-bootstrap';
 import CardHeader from 'react-bootstrap/esm/CardHeader';

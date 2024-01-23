@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Form, Button, Container, Navbar, Card, Table } from 'react-bootstrap';
-import invoiceService from '../service/invoice.service';
+import invoiceService from '../service/invoice';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -3,7 +3,7 @@ import { Button, Container, Form, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
-import invoiceService from '../service/invoice.service';
+import invoiceService from '../service/invoice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 

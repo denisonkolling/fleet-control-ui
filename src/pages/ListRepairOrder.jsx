@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import repairOrderService from '../service/repairOrder.service';
+import repairOrderService from '../service/repairOrder';
 import NavbarSystem from '../components/Navbar';
 import { Card, CardGroup, Container, ModalTitle } from 'react-bootstrap';
 import moment from 'moment';

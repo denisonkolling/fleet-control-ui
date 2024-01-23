@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import expenseService from '../service/expense.service';
+import expenseService from '../service/expense';
 import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';

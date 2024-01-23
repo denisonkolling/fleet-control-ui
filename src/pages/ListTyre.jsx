@@ -4,6 +4,7 @@ import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
+import { Link } from 'react-router-dom';
 
 const ListTyre = () => {
 	const [tyreList, setTyreList] = useState([]);
@@ -54,6 +55,13 @@ const ListTyre = () => {
 										<td>{t.serial}</td>
 										<td>{t.position}</td>
 										<td>{t.vehicle}</td>
+										<td>
+											<Link
+												to={`/tyre-edit/${t.id}`}
+												className="btn btn-sm btn-primary px-4">
+												Edit
+											</Link>
+										</td>
 									</tr>
 								))}
 							</tbody>

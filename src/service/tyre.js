@@ -20,7 +20,7 @@ class Tyre {
 
     getTyreById = async (id) => {
         try {
-            return axios.get(`${import.meta.env.VITE_API_BASE_URL}/` + id);
+            return axios.get(`${import.meta.env.VITE_API_BASE_URL}/tyre/` + id);
         } catch (e) {
             throw e;
         }

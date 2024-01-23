@@ -1,10 +1,11 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Form, Button, Container, Navbar, Card } from 'react-bootstrap';
 import tyreService from '../service/tyre';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AddTyre = () => {
+const EditTyre = () => {
 	const [tyre, setTyre] = useState({
 		vehicleId: '',
 		manufacturer: '',
@@ -22,6 +23,21 @@ const AddTyre = () => {
 		setMessage('');
 		setError('');
 	};
+
+	const navigate = useNavigate();
+
+	const { id } = useParams();
+
+	useEffect(() => {
+		tyreService
+			.getTyreById(id)
+			.then((res) => {
+				setTyre(res.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
 
 	const handleChange = (e) => {
 		const value = e.target.value;
@@ -43,7 +59,7 @@ const AddTyre = () => {
 					position: '',
 					vehicle: '',
 				});
-				setMessage('Vehicle added successfully!');
+				setMessage('Tyre added successfully!');
 			})
 			.catch((error) => {
 				setError('Something went wrong on server!');
@@ -71,16 +87,16 @@ const AddTyre = () => {
 									onBlur={clearMessageError}
 									required
 								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>Manufacturer</Form.Label>
-								<Form.Control
-									type="text"
-									name="manufacturer"
-									onChange={handleChange}
-									value={tyre.manufacturer}
-									required
-								/>
+								<Form.Group className="mb-3" controlId="name">
+									<Form.Label>Manufacturer</Form.Label>
+									<Form.Control
+										type="text"
+										name="manufacturer"
+										onChange={handleChange}
+										value={tyre.manufacturer}
+										required
+									/>
+								</Form.Group>
 							</Form.Group>
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Model</Form.Label>
@@ -140,4 +156,4 @@ const AddTyre = () => {
 	);
 };
 
-export default AddTyre;
+export default EditTyre;

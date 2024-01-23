@@ -59,7 +59,7 @@ const ListDriver = () => {
 										<td>
 											<Link
 												to={`/driver-edit/${d.id}`}
-												className="btn btn-sm btn-primary px-4 m-1">
+												className="btn btn-sm btn-primary px-4">
 												Edit
 											</Link>
 										</td>

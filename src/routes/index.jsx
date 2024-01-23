@@ -18,6 +18,7 @@ import ListProducts from '../pages/ListProduct';
 import ListDriver from '../pages/ListDriver';
 import AddProduct from '../pages/AddProduct';
 import EditVehicle from '../pages/EditVehicle';
+import EditTyre from '../pages/EditTyre';
 import FindInvoice from '../pages/FindInvoice';
 import FindDriver from '../pages/FindDriver';
 import EditDriver from '../pages/EditDriver';
@@ -42,6 +43,7 @@ const RoutesApp = () => {
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/vehicle-edit/:id" element={<EditVehicle />} />
 				<Route exact path="/driver-edit/:id" element={<EditDriver />} />
+				<Route exact path="/tyre-edit/:id" element={<EditTyre />} />
 				<Route exact path="/expense-list" element={<ListExpense />} />
 				<Route exact path="/tyre-list" element={<ListTyre />} />
 				<Route exact path="/tyre-reading" element={<ListTyreReading />} />

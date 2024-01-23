@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Form, Button, Container, Navbar, Card } from 'react-bootstrap';
-import driverService from '../service/driver.service';
+import driverService from '../service/driver';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import moment from 'moment';

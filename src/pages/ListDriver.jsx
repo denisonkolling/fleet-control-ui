@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import driverService from '../service/driver.service';
+import driverService from '../service/driver';
 import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import CardHeader from 'react-bootstrap/esm/CardHeader';

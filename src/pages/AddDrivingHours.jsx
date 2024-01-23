@@ -5,7 +5,7 @@ import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import driverService from '../service/driver.service';
+import driverService from '../service/driver';
 import drivingHoursService from '../service/drivingHours.service';
 
 const AddDrivingHours = () => {

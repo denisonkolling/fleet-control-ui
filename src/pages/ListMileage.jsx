@@ -4,7 +4,7 @@ import { Button, Container, Form, Card} from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
-import mileageService from '../service/mileage.service';
+import mileageService from '../service/mileage';
 import moment from 'moment';
 
 const ListMileage = () => {

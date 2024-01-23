@@ -24,6 +24,7 @@ import FindDriver from '../pages/FindDriver';
 import EditDriver from '../pages/EditDriver';
 import AddDrivingHours from '../pages/AddDrivingHours';
 import AddServiceOrder from '../pages/AddServiceOrder';
+import AddTrip from '../pages/AddTrip';
 
 const RoutesApp = () => {
 	return (
@@ -39,6 +40,7 @@ const RoutesApp = () => {
 				<Route exact path="/register-product" element={<AddProduct />} />
 				<Route exact path="/register-driving-hours" element={<AddDrivingHours />} />
 				<Route exact path="/register-service-order" element={<AddServiceOrder />} />
+				<Route exact path="/register-trip" element={<AddTrip />} />
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/vehicle-edit/:id" element={<EditVehicle />} />

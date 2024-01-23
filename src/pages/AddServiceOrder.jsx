@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import customerService from '../service/customer';
 import productService from '../service/product';
-import vehicleService from '../service/vehicle.service';
+import vehicleService from '../service/vehicle';
 
 const AddServiceOrder = () => {
 

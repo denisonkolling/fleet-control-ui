@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
-import vehicleService from '../service/vehicle.service';
+import vehicleService from '../service/vehicle';
 import NavbarSystem from '../components/Navbar';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';

@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
-import vehicleService from '../service/vehicle.service';
+import vehicleService from '../service/vehicle';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { useNavigate, useParams } from 'react-router-dom';

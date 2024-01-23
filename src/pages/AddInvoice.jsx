@@ -6,7 +6,7 @@ import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import customerService from '../service/customer';
-import productService from '../service/product.service';
+import productService from '../service/product';
 
 const AddInvoice = () => {
 	const [invoice, setInvoice] = useState({

@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
-import productService from '../service/product.service';
+import productService from '../service/product';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 

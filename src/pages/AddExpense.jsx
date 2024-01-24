@@ -86,6 +86,17 @@ const AddExpense = () => {
 					<Container className="p-4">
 						<Form onSubmit={handleSubmit}>
 							<Form.Group className="mb-3" controlId="name">
+								<Form.Label>Date</Form.Label>
+								<Form.Control
+									type="date"
+									name="expenseDate"
+									onChange={handleChange}
+									value={expense.expenseDate}
+									required
+								/>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Trip Number</Form.Label>
 								<Form.Control
 									type="number"
@@ -134,17 +145,6 @@ const AddExpense = () => {
 									name="value"
 									onChange={handleChange}
 									value={expense.value}
-									required
-								/>
-							</Form.Group>
-
-							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>Date</Form.Label>
-								<Form.Control
-									type="date"
-									name="expenseDate"
-									onChange={handleChange}
-									value={expense.expenseDate}
 									required
 								/>
 							</Form.Group>

@@ -1,6 +1,7 @@
-import { React, useState } from 'react';
-import { Form, Button, Container, Card } from 'react-bootstrap';
+import { React, useState, useEffect } from 'react';
+import { Form, Button, Container, Card, Dropdown } from 'react-bootstrap';
 import vehicleService from '../service/vehicle';
+import driverService from '../service/driver';
 import NavbarSystem from '../components/Navbar';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
@@ -15,11 +16,28 @@ const AddVehicle = () => {
 		year: '',
 	});
 
+	const [drivers, setDrivers] = useState([]);
+
 	const [message, setMessage] = useState('');
 	const [error, setError] = useState('');
 
 	const [checked, setChecked] = useState(false);
 	const [radioValue, setRadioValue] = useState('1');
+
+	useEffect(() => {
+		init();
+	}, []);
+
+	const init = () => {
+		driverService
+			.getAllDriver()
+			.then((res) => {
+				setDrivers(res.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 	const radios = [
 		{ name: 'Diesel', value: '1' },
@@ -32,10 +50,14 @@ const AddVehicle = () => {
 		setVehicle({ ...vehicle, [e.target.name]: value });
 	};
 
+	const handleDriverSelect = (selectedDriver) => {
+		setVehicle({ ...vehicle, driver: selectedDriver });
+	};
+
 	const clearMessageError = (e) => {
 		setMessage('');
 		setError('');
-	}
+	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -82,16 +104,26 @@ const AddVehicle = () => {
 									required
 								/>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Driver</Form.Label>
-								<Form.Control
-									type="text"
-									name="driver"
-									onChange={handleChange}
-									value={vehicle.driver}
-									required
-								/>
+								<Dropdown>
+									<Dropdown.Toggle id="dropdown-basic" className="col-4">
+										{' '}
+										{vehicle.driver || 'Select'}
+									</Dropdown.Toggle>
+									<Dropdown.Menu>
+										{drivers.map((driver, index) => (
+											<Dropdown.Item
+												key={index}
+												onClick={() => handleDriverSelect(driver.firstName)}>
+												{driver.firstName + ' ' + driver.lastName}
+											</Dropdown.Item>
+										))}
+									</Dropdown.Menu>
+								</Dropdown>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Mileage</Form.Label>
 								<Form.Control
@@ -139,7 +171,9 @@ const AddVehicle = () => {
 						</Form>
 					</Container>
 				</Card>
-				{message && <p className="fs-4 mt-2 text-center text-success">{message}</p>}
+				{message && (
+					<p className="fs-4 mt-2 text-center text-success">{message}</p>
+				)}
 				{error && <p className="fs-4 mt-2 text-center text-danger">{error}</p>}
 			</Container>
 		</>

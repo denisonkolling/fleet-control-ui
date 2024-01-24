@@ -1,10 +1,20 @@
 import { React, useState } from 'react';
-import { Form, Button, Container, Navbar, Card } from 'react-bootstrap';
+import {
+	Form,
+	Button,
+	Container,
+	Navbar,
+	Card,
+	ButtonGroup,
+	ToggleButton,
+	Dropdown
+} from 'react-bootstrap';
 import tyreService from '../service/tyre';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 const AddTyre = () => {
+
 	const [tyre, setTyre] = useState({
 		vehicleId: '',
 		manufacturer: '',
@@ -15,8 +25,25 @@ const AddTyre = () => {
 		vehicle: '',
 	});
 
+	const [manufacturers, setManufacturers] = useState([
+		'Bridgestone',
+		'Goodyear',
+		'Pirelli',
+		'Michelin'
+	]);
+
+	const radios = [
+		{ name: 'Front Right', value: 'FR' },
+		{ name: 'Front Left', value: 'FL' },
+		{ name: 'Rear Right', value: 'RR' },
+		{ name: 'Rear Left', value: 'RL' },
+	];
+
 	const [message, setMessage] = useState('');
 	const [error, setError] = useState('');
+
+	const [checked, setChecked] = useState(false);
+	const [radioValue, setRadioValue] = useState('1');
 
 	const clearMessageError = (e) => {
 		setMessage('');
@@ -25,7 +52,18 @@ const AddTyre = () => {
 
 	const handleChange = (e) => {
 		const value = e.target.value;
-		setTyre({ ...tyre, [e.target.name]: value });
+		const name = e.target.name;
+	
+		if (name === 'position') {
+			setRadioValue(value);
+			setTyre({ ...tyre, position: value });
+		} else {
+			setTyre({ ...tyre, [name]: value });
+		}
+	};
+
+	const handleManufacturerSelect = (selectedManufacturer) => {
+		setTyre({ ...tyre, manufacturer: selectedManufacturer });
 	};
 
 	const handleSubmit = (e) => {
@@ -72,16 +110,26 @@ const AddTyre = () => {
 									required
 								/>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Manufacturer</Form.Label>
-								<Form.Control
-									type="text"
-									name="manufacturer"
-									onChange={handleChange}
-									value={tyre.manufacturer}
-									required
-								/>
+								<Dropdown>
+									<Dropdown.Toggle id="dropdown-basic" className="col-4">
+										{' '}
+										{tyre.manufacturer || 'Select'}
+									</Dropdown.Toggle>
+									<Dropdown.Menu>
+										{manufacturers.map((manufacturer, index) => (
+											<Dropdown.Item
+												key={index}
+												onClick={() => handleManufacturerSelect(manufacturer)}>
+												{manufacturer}
+											</Dropdown.Item>
+										))}
+									</Dropdown.Menu>
+								</Dropdown>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Model</Form.Label>
 								<Form.Control
@@ -102,17 +150,27 @@ const AddTyre = () => {
 									required
 								/>
 							</Form.Group>
+
+							<Form.Label>Position</Form.Label>
+							<br></br>
+							<ButtonGroup className=''>
+								{radios.map((radio, idx) => (
+									<ToggleButton
+										key={idx}
+										id={`radio-${idx}`}
+										type="radio"
+										variant={idx % 2 ? 'outline-primary' : 'outline-primary'}
+										name="position"
+										value={radio.value}
+										checked={radioValue === radio.value}
+										onChange={handleChange}>
+										{radio.name}
+									</ToggleButton>
+								))}
+							</ButtonGroup>
+							
 							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>Position</Form.Label>
-								<Form.Control
-									type="text"
-									name="position"
-									onChange={handleChange}
-									value={tyre.position}
-									required
-								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="name">
+							<br></br>
 								<Form.Label>Vehicle</Form.Label>
 								<Form.Control
 									type="text"
@@ -132,9 +190,9 @@ const AddTyre = () => {
 					</Container>
 				</Card>
 				{message && (
-					<p className="fs-4 mt-2 text-center text-success">{message}</p>
+					<p className="fs-6 mt-2 alert alert-success">{message}</p>
 				)}
-				{error && <p className="fs-4 mt-2 text-center text-danger">{error}</p>}
+				{error && <p className="fs-6 mt-2 alert alert-danger">{error}</p>}
 			</Container>
 		</>
 	);

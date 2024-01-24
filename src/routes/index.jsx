@@ -26,6 +26,7 @@ import AddDrivingHours from '../pages/AddDrivingHours';
 import AddServiceOrder from '../pages/AddServiceOrder';
 import AddTrip from '../pages/AddTrip';
 import ListTrip from '../pages/ListTrip';
+import AddExpense from '../pages/AddExpense';
 
 const RoutesApp = () => {
 	return (
@@ -41,6 +42,7 @@ const RoutesApp = () => {
 				<Route exact path="/register-product" element={<AddProduct />} />
 				<Route exact path="/register-driving-hours" element={<AddDrivingHours />} />
 				<Route exact path="/register-service-order" element={<AddServiceOrder />} />
+				<Route exact path="/register-expense" element={<AddExpense />} />
 				<Route exact path="/register-trip" element={<AddTrip />} />
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />

@@ -54,7 +54,7 @@ const ListTrip = () => {
 										<td>{t.destination}</td>
 										<td>{t.distance}</td>
 										<td>{t.invoice}</td>
-										<td>{t.totalExpenses}</td>
+										<td>{t.tripTotalExpense}</td>
 										<td>
 											<Link
 												to={`/trip-edit/${t.id}`}

@@ -1,5 +1,12 @@
-import { React, useState } from 'react';
-import { Form, Button, Container, Navbar, Card } from 'react-bootstrap';
+import { React, useState, useEffect } from 'react';
+import {
+	Form,
+	Button,
+	Container,
+	Navbar,
+	Card,
+	Dropdown,
+} from 'react-bootstrap';
 import expenseService from '../service/expense';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
@@ -13,8 +20,25 @@ const AddExpense = () => {
 		expenseDate: '',
 	});
 
+	const [options, setOptions] = useState([]);
+
 	const [message, setMessage] = useState('');
 	const [error, setError] = useState('');
+
+	useEffect(() => {
+		init();
+	}, []);
+
+	const init = () => {
+		expenseService
+			.getAllCategories()
+			.then((res) => {
+				setOptions(res.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 	const clearMessageError = (e) => {
 		setMessage('');
@@ -24,6 +48,10 @@ const AddExpense = () => {
 	const handleChange = (e) => {
 		const value = e.target.value;
 		setExpense({ ...expense, [e.target.name]: value });
+	};
+
+	const handleCategorySelect = (selectedCategory) => {
+		setExpense({ ...expense, category: selectedCategory });
 	};
 
 	const handleSubmit = (e) => {
@@ -68,6 +96,7 @@ const AddExpense = () => {
 									required
 								/>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Description</Form.Label>
 								<Form.Control
@@ -78,16 +107,26 @@ const AddExpense = () => {
 									required
 								/>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Category</Form.Label>
-								<Form.Control
-									type="text"
-									name="category"
-									onChange={handleChange}
-									value={expense.category}
-									required
-								/>
+								<Dropdown>
+									<Dropdown.Toggle id="dropdown-basic" className="col-4">
+										{' '}
+										{expense.category || 'Selecionar'}
+									</Dropdown.Toggle>
+									<Dropdown.Menu>
+										{options.map((option, index) => (
+											<Dropdown.Item
+												key={index}
+												onClick={() => handleCategorySelect(option)}>
+												{option}
+											</Dropdown.Item>
+										))}
+									</Dropdown.Menu>
+								</Dropdown>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Value</Form.Label>
 								<Form.Control
@@ -98,6 +137,7 @@ const AddExpense = () => {
 									required
 								/>
 							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Date</Form.Label>
 								<Form.Control

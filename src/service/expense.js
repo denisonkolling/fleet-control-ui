@@ -42,6 +42,14 @@ class Expense {
         }
     }
 
+    getAllCategories = async () => {
+        try {
+            return axios.get(`${import.meta.env.VITE_API_BASE_URL}/expense/category`);
+        } catch (e) {
+            throw e;
+        }
+    }
+
 }
 
 export default new Expense;

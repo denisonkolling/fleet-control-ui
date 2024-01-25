@@ -7,43 +7,33 @@ import {
 	Card,
 	ButtonGroup,
 	ToggleButton,
-	Dropdown
+	Dropdown,
 } from 'react-bootstrap';
 import tyreService from '../service/tyre';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 
-const AddTyre = () => {
+const AddTyreReading = () => {
 
 	const [tyre, setTyre] = useState({
-		vehicleId: '',
-		manufacturer: '',
-		serial: '',
-		model: '',
-		position: '',
-		size: '',
-		vehicle: '',
+		tyreId: '',
+		insideTread: '',
+		midleTread: '',
+		outsideTread: '',
+    date: '',
+    pressure: '',
+    vehicleMileage: '',
 	});
 
-	const [manufacturers, setManufacturers] = useState([
-		'Bridgestone',
-		'Goodyear',
-		'Pirelli',
-		'Michelin'
-	]);
-
 	const radios = [
-		{ name: 'Front Right', value: 'FR' },
-		{ name: 'Front Left', value: 'FL' },
-		{ name: 'Rear Right', value: 'RR' },
-		{ name: 'Rear Left', value: 'RL' },
+		{ name: '90 PSI', value: '90' },
+		{ name: '110 PSI', value: '110' },
 	];
 
 	const [message, setMessage] = useState('');
 	const [error, setError] = useState('');
 
-	const [checked, setChecked] = useState(false);
-	const [radioValue, setRadioValue] = useState('1');
+	const [radioValue, setRadioValue] = useState('90');
 
 	const clearMessageError = (e) => {
 		setMessage('');
@@ -53,33 +43,26 @@ const AddTyre = () => {
 	const handleChange = (e) => {
 		const value = e.target.value;
 		const name = e.target.name;
-	
-		if (name === 'position') {
+
+		if (name === 'pressure') {
 			setRadioValue(value);
-			setTyre({ ...tyre, position: value });
+			setTyre({ ...tyre, pressure: value });
 		} else {
 			setTyre({ ...tyre, [name]: value });
 		}
-	};
-
-	const handleManufacturerSelect = (selectedManufacturer) => {
-		setTyre({ ...tyre, manufacturer: selectedManufacturer });
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		tyreService
-			.saveTyre(tyre)
+			.saveTyreReading(tyre)
 			.then((res) => {
 				setTyre({
-					vehicleId: '',
-					manufacturer: '',
-					serial: '',
-					model: '',
-					size: '',
-					position: '',
-					vehicle: '',
+					tyreId: '',
+					insideTread: '',
+					midleTread: '',
+					outsideTread: '',
 				});
 				setMessage('Vehicle added successfully!');
 			})
@@ -95,72 +78,75 @@ const AddTyre = () => {
 			<Container className="mt-4 col-md-4">
 				<Card>
 					<CardHeader className="text-center fs-4">
-						Tyre Registration
+						Tyre Tread Depth Registration
 					</CardHeader>
 					<Container className="p-4">
 						<Form onSubmit={handleSubmit}>
+							<Form.Group className="mb-3 col-md-5" controlId="name">
+								<Form.Label>Date</Form.Label>
+								<Form.Control
+									type="date"
+									name="date"
+									onChange={handleChange}
+									value={tyre.date}
+									required
+								/>
+							</Form.Group>
 							<Form.Group className="mb-3" controlId="name">
 								<Form.Label>Serial Number</Form.Label>
 								<Form.Control
 									type="text"
-									name="serial"
+									name="tyreId"
 									onChange={handleChange}
-									value={tyre.serial}
+									value={tyre.tyreId}
 									onBlur={clearMessageError}
 									required
 								/>
 							</Form.Group>
 
 							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>Manufacturer</Form.Label>
-								<Dropdown>
-									<Dropdown.Toggle id="dropdown-basic" className="col-4">
-										{' '}
-										{tyre.manufacturer || 'Select'}
-									</Dropdown.Toggle>
-									<Dropdown.Menu>
-										{manufacturers.map((manufacturer, index) => (
-											<Dropdown.Item
-												key={index}
-												onClick={() => handleManufacturerSelect(manufacturer)}>
-												{manufacturer}
-											</Dropdown.Item>
-										))}
-									</Dropdown.Menu>
-								</Dropdown>
-							</Form.Group>
-
-							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>Model</Form.Label>
+								<Form.Label>Inside Tread</Form.Label>
 								<Form.Control
-									type="text"
-									name="model"
+									type="number"
+									name="insideTread"
 									onChange={handleChange}
-									value={tyre.model}
-									required
-								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="name">
-								<Form.Label>Size</Form.Label>
-								<Form.Control
-									type="text"
-									name="size"
-									onChange={handleChange}
-									value={tyre.size}
+									value={tyre.insideTread}
 									required
 								/>
 							</Form.Group>
 
-							<Form.Label>Position</Form.Label>
+							<Form.Group className="mb-3" controlId="name">
+								<Form.Label>Midle Tread</Form.Label>
+								<Form.Control
+									type="number"
+									name="midleTread"
+									onChange={handleChange}
+									value={tyre.midleTread}
+									required
+								/>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="name">
+								<Form.Label>Outside Tread</Form.Label>
+								<Form.Control
+									type="number"
+									name="outsideTread"
+									onChange={handleChange}
+									value={tyre.outsideTread}
+									required
+								/>
+							</Form.Group>
+
+							<Form.Label>Pressure</Form.Label>
 							<br></br>
-							<ButtonGroup className=''>
+							<ButtonGroup className="">
 								{radios.map((radio, idx) => (
 									<ToggleButton
 										key={idx}
 										id={`radio-${idx}`}
 										type="radio"
 										variant={idx % 2 ? 'outline-primary' : 'outline-primary'}
-										name="position"
+										name="pressure"
 										value={radio.value}
 										checked={radioValue === radio.value}
 										onChange={handleChange}>
@@ -168,15 +154,15 @@ const AddTyre = () => {
 									</ToggleButton>
 								))}
 							</ButtonGroup>
-							
+
 							<Form.Group className="mb-3" controlId="name">
-							<br></br>
-								<Form.Label>Vehicle</Form.Label>
+								<br></br>
+								<Form.Label>Vehicle Mileage</Form.Label>
 								<Form.Control
 									type="text"
-									name="vehicle"
+									name="vehicleMileage"
 									onChange={handleChange}
-									value={tyre.vehicle}
+									value={tyre.vehicleMileage}
 									required
 								/>
 							</Form.Group>
@@ -189,13 +175,11 @@ const AddTyre = () => {
 						</Form>
 					</Container>
 				</Card>
-				{message && (
-					<p className="fs-6 mt-2 alert alert-success">{message}</p>
-				)}
+				{message && <p className="fs-6 mt-2 alert alert-success">{message}</p>}
 				{error && <p className="fs-6 mt-2 alert alert-danger">{error}</p>}
 			</Container>
 		</>
 	);
 };
 
-export default AddTyre;
+export default AddTyreReading;

@@ -27,6 +27,7 @@ import AddServiceOrder from '../pages/AddServiceOrder';
 import AddTrip from '../pages/AddTrip';
 import ListTrip from '../pages/ListTrip';
 import AddExpense from '../pages/AddExpense';
+import AddTyreReading from '../pages/AddTyreReading';
 
 const RoutesApp = () => {
 	return (
@@ -44,6 +45,7 @@ const RoutesApp = () => {
 				<Route exact path="/register-service-order" element={<AddServiceOrder />} />
 				<Route exact path="/register-expense" element={<AddExpense />} />
 				<Route exact path="/register-trip" element={<AddTrip />} />
+				<Route exact path="/register-tyre-reading" element={<AddTyreReading />} />
 				<Route exact path="/vehicle-service-order" element={<ListRepairOrder />} />
 				<Route exact path="/vehicle-list" element={<ListVehicle />} />
 				<Route exact path="/vehicle-edit/:id" element={<EditVehicle />} />

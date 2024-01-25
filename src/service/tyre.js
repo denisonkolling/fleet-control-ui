@@ -49,6 +49,15 @@ class Tyre {
             throw e;
         }
     }
+
+    saveTyreReading = async (tyreReading) => {
+        try {
+            return axios.post(`${import.meta.env.VITE_API_BASE_URL}/tyre-reading`, tyreReading);
+        } catch (e) {
+            throw e;
+        }
+    }
+
 }
 
 export default new Tyre;

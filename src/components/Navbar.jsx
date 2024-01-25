@@ -36,10 +36,10 @@ function NavbarSystem() {
             </NavDropdown>
             <NavDropdown title="Tyres" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-tyre">Register Tyre</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Tyre</NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item href="/tyre-list">List Tyres</NavDropdown.Item>
-              <NavDropdown.Item href="/tyre-reading">Tyre Reading</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/register-tyre-reading">Register Tyre Reading</NavDropdown.Item>
+              <NavDropdown.Item href="/tyre-reading">List Tyre Reading</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Trips" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-trip">Register Trip</NavDropdown.Item>

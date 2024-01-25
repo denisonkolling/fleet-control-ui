@@ -28,6 +28,7 @@ import AddTrip from '../pages/AddTrip';
 import ListTrip from '../pages/ListTrip';
 import AddExpense from '../pages/AddExpense';
 import AddTyreReading from '../pages/AddTyreReading';
+import FindExpense from '../pages/FindExpense';
 
 const RoutesApp = () => {
 	return (
@@ -61,6 +62,7 @@ const RoutesApp = () => {
 				<Route exact path="/driver-list" element={<ListDriver />} />
 				<Route exact path="/trip-list" element={<ListTrip />} />
 				<Route exact path="/find-driver" element={<FindDriver />} />
+				<Route exact path="/find-expense" element={<FindExpense />} />
 				<Route exact path="/invoice-find" element={<FindInvoice />} />
 				{/* <Route exact path="signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />

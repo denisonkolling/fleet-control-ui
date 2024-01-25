@@ -26,6 +26,14 @@ class Expense {
         }
     }
 
+    getAllExpenseByTripId = async (id) =>  {
+        try {
+            return axios.get(`${import.meta.env.VITE_API_BASE_URL}/expense/trip/` + id);
+        } catch (e) {
+            throw e;
+        }
+    }
+
     deleteExpense = async (id) =>  {
         try {
             return axios.delete(`${import.meta.env.VITE_API_BASE_URL}/expense/` + id);

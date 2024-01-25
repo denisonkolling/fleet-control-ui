@@ -64,7 +64,7 @@ const AddTyreReading = () => {
 					midleTread: '',
 					outsideTread: '',
 				});
-				setMessage('Vehicle added successfully!');
+				setMessage('Tyre reading added successfully!');
 			})
 			.catch((error) => {
 				setError('Something went wrong on server!');
@@ -89,6 +89,7 @@ const AddTyreReading = () => {
 									name="date"
 									onChange={handleChange}
 									value={tyre.date}
+                  onClick={clearMessageError}
 									required
 								/>
 							</Form.Group>
@@ -99,7 +100,7 @@ const AddTyreReading = () => {
 									name="tyreId"
 									onChange={handleChange}
 									value={tyre.tyreId}
-									onBlur={clearMessageError}
+                  onClick={clearMessageError}
 									required
 								/>
 							</Form.Group>

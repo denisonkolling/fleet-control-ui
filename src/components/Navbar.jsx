@@ -47,10 +47,8 @@ function NavbarSystem() {
             </NavDropdown>
             <NavDropdown title="Expenses" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-expense">Register Expense</NavDropdown.Item>
-              
-              <NavDropdown.Divider />
               <NavDropdown.Item href="/expense-list">List Expenses</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Trip</NavDropdown.Item>
+              <NavDropdown.Item href="/find-expense">Expenses by Trip</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Customer" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-customer">Register Customer</NavDropdown.Item>

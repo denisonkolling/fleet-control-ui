@@ -8,8 +8,15 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import customerService from '../service/customer';
 import productService from '../service/product';
 import vehicleService from '../service/vehicle';
+import repairOrder from '../service/repairOrder';
 
 const AddServiceOrder = () => {
+	const [serviceOrder, setServiceOrder] = useState({
+		plate: '',
+		openDate: '',
+		services: [],
+		parts: [],
+	});
 
 	const [vehicle, setVehicle] = useState({
 		id: '',
@@ -20,59 +27,73 @@ const AddServiceOrder = () => {
 		year: '',
 	});
 
-	const [invoice, setInvoice] = useState({
-		number: '',
-		date: '',
-		issuerId: '',
-		issuerName: '',
-		buyerId: '',
-		buyerName: '',
-		items: [],
-	});
-
-	const [item, setItem] = useState({
-		id: 0,
-		productId: '',
-		productName: '',
+	const [part, setPart] = useState({
+		partId: '',
+		name: '',
 		quantity: '',
 		unitPrice: '',
 	});
 
-	const [itemsList, setItemsList] = useState([]);
+	const [service, setService] = useState({
+		serviceId: '',
+		name: '',
+		quantity: '',
+		unitPrice: '',
+	});
+
+	const [partList, setPartList] = useState([]);
+	const [serviceList, setServiceList] = useState([]);
+
 	const [message, setMessage] = useState('');
 	const [error, setError] = useState('');
 
-	const handleChange = (e) => {
+	const handleInputChange = (target, setState) => (e) => {
 		const value = e.target.value;
-		setInvoice({ ...invoice, [e.target.name]: value });
+		setState({ ...target, [e.target.name]: value });
 	};
 
-	const handleVehicleChange = (e) => {
-		const value = e.target.value;
-		setVehicle({ ...vehicle, [e.target.name]: value });
-	};
+	const handleServiceOrderChange = handleInputChange(
+		serviceOrder,
+		setServiceOrder
+	);
+	const handleServiceChange = handleInputChange(service, setService);
+	const handlePartChange = handleInputChange(part, setPart);
+	const handleVehicleChange = handleInputChange(vehicle, setVehicle);
 
-	const handleItemChange = (e) => {
-		const value = e.target.value;
-		setItem({ ...item, [e.target.name]: value });
-	};
-
-	const handleAddItem = () => {
-		setItem({
-			...item,
-			id: itemsList.length + 1,
+	const handleAddService = () => {
+		setService({
+			...service,
+			id: serviceList.length + 1,
 		});
-		setItemsList([...itemsList, item]);
-		setItem({
-			productId: '',
-			productName: '',
+		setServiceList([...serviceList, service]);
+		setService({
+			serviceId: '',
+			name: '',
 			quantity: '',
 			unitPrice: '',
 		});
 	};
 
-	const handleAddItemsInvoice = () => {
-		setInvoice({ ...invoice, items: itemsList });
+	const handleAddPart = () => {
+		setPart({
+			...part,
+			id: partList.length + 1,
+		});
+		setPartList([...partList, part]);
+		setPart({
+			partId: '',
+			name: '',
+			quantity: '',
+			unitPrice: '',
+		});
+	};
+
+	const handleAddServiceOrderItems = () => {
+		setServiceOrder({
+			...serviceOrder,
+			services: serviceList,
+			parts: partList,
+		});
 	};
 
 	const handleClearMessage = () => {
@@ -81,20 +102,19 @@ const AddServiceOrder = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		invoiceService
-			.saveInvoice(invoice)
+		handleAddServiceOrderItems();
+		repairOrder
+			.saveRepairOrder(serviceOrder)
 			.then((res) => {
-				setMessage('Invoice Added Successfuly!');
-				setInvoice({
-					number: '',
-					date: '',
-					issuerId: '',
-					issuerName: '',
-					buyerId: '',
-					buyerName: '',
-					items: [],
+				setServiceOrder({
+					plate: '',
+					openDate: '',
+					services: [],
+					parts: [],
 				});
-				setItemsList([]);
+				setMessage('Service Order added successfuly!');
+				setServiceList([]);
+				setPartList([]);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -168,22 +188,12 @@ const AddServiceOrder = () => {
 			<NavbarSystem />
 			<Container className="mt-4">
 				<Card>
-					<CardHeader className="text-center fs-4">Service Order</CardHeader>
+					<CardHeader className="text-center fs-4">
+						Create Service Order
+					</CardHeader>
 					<Container className="p-4">
 						<Form onSubmit={handleSubmit}>
 							<div className="d-flex justify-content-between">
-								{/* <Form.Group className="mb-3 col-md-5" controlId="name">
-									<Form.Label>Number</Form.Label>
-									<Form.Control
-										type="number"
-										name="number"
-										onChange={handleChange}
-										value={invoice.number}
-										onSelect={handleClearMessage}
-										required
-									/>
-								</Form.Group> */}
-
 								<Form.Group className="mb-3 col-md-3" controlId="name">
 									<FontAwesomeIcon icon={faMagnifyingGlass} />
 									<Form.Label>&nbsp;Plate</Form.Label>
@@ -201,9 +211,9 @@ const AddServiceOrder = () => {
 									<Form.Label>Date</Form.Label>
 									<Form.Control
 										type="date"
-										name="date"
-										onChange={handleChange}
-										value={invoice.date}
+										name="openDate"
+										onChange={handleServiceOrderChange}
+										value={serviceOrder.openDate}
 										required
 									/>
 								</Form.Group>
@@ -213,7 +223,6 @@ const AddServiceOrder = () => {
 									<Form.Control
 										type="text"
 										name="driverName"
-										onChange={handleVehicleChange}
 										value={vehicle.driver}
 										readOnly
 									/>
@@ -228,10 +237,10 @@ const AddServiceOrder = () => {
 											<Form.Label>&nbsp;Service ID</Form.Label>
 											<Form.Control
 												type="number"
-												name="productId"
-												value={item.productId}
-												onChange={handleItemChange}
-												onBlur={findItem}
+												name="serviceId"
+												value={service.serviceId}
+												onChange={handleServiceChange}
+												// onBlur={findItem}
 											/>
 										</Form.Group>
 
@@ -239,10 +248,10 @@ const AddServiceOrder = () => {
 											<Form.Label>Service Name</Form.Label>
 											<Form.Control
 												type="text"
-												name="productName"
-												value={item.productName}
-												onChange={handleItemChange}
-												readOnly
+												name="name"
+												value={service.name}
+												onChange={handleServiceChange}
+												// readOnly
 											/>
 										</Form.Group>
 
@@ -251,8 +260,8 @@ const AddServiceOrder = () => {
 											<Form.Control
 												type="number"
 												name="quantity"
-												value={item.quantity}
-												onChange={handleItemChange}
+												value={service.quantity}
+												onChange={handleServiceChange}
 											/>
 										</Form.Group>
 
@@ -261,8 +270,8 @@ const AddServiceOrder = () => {
 											<Form.Control
 												type="number"
 												name="unitPrice"
-												value={item.unitPrice}
-												onChange={handleItemChange}
+												value={service.unitPrice}
+												onChange={handleServiceChange}
 											/>
 										</Form.Group>
 									</>
@@ -271,7 +280,7 @@ const AddServiceOrder = () => {
 										className="col23 m-4"
 										variant="primary"
 										type="button"
-										onClick={handleAddItem}>
+										onClick={handleAddService}>
 										Add Service
 									</Button>
 								</div>
@@ -287,29 +296,22 @@ const AddServiceOrder = () => {
 										</tr>
 									</thead>
 									<tbody>
-										{itemsList.map((item) => (
-											<tr key={item.id}>
-												<td>{item.productId}</td>
-												<td>{item.productName}</td>
-												<td>{item.quantity}</td>
-												<td>{item.unitPrice}</td>
-												<td>{item.unitPrice * item.quantity}</td>
+										{serviceList.map((service) => (
+											<tr key={service.id}>
+												<td>{service.serviceId}</td>
+												<td>{service.name}</td>
+												<td>{service.quantity}</td>
+												<td>$ {parseFloat(service.unitPrice).toFixed(2)}</td>
+												<td>
+													${' '}
+													{parseFloat(
+														service.unitPrice * service.quantity
+													).toFixed(2)}
+												</td>
 											</tr>
 										))}
 									</tbody>
 								</Table>
-
-								{/* <Form.Group className="mb-3 col-md-4" controlId="name">
-									<Form.Label>Buyer Name</Form.Label>
-									<Form.Control
-										type="text"
-										name="buyerName"
-										onChange={handleChange}
-										value={invoice.buyerName}
-										readOnly
-										required
-									/>
-								</Form.Group> */}
 							</div>
 
 							<div className="d-flex justify-content-between">
@@ -319,10 +321,10 @@ const AddServiceOrder = () => {
 										<Form.Label>&nbsp;Part ID</Form.Label>
 										<Form.Control
 											type="number"
-											name="productId"
-											value={item.productId}
-											onChange={handleItemChange}
-											onBlur={findItem}
+											name="partId"
+											value={part.partId}
+											onChange={handlePartChange}
+											// onBlur={findItem}
 										/>
 									</Form.Group>
 
@@ -330,10 +332,10 @@ const AddServiceOrder = () => {
 										<Form.Label>Part Name</Form.Label>
 										<Form.Control
 											type="text"
-											name="productName"
-											value={item.productName}
-											onChange={handleItemChange}
-											readOnly
+											name="name"
+											value={part.name}
+											onChange={handlePartChange}
+											// readOnly
 										/>
 									</Form.Group>
 
@@ -342,8 +344,8 @@ const AddServiceOrder = () => {
 										<Form.Control
 											type="number"
 											name="quantity"
-											value={item.quantity}
-											onChange={handleItemChange}
+											value={part.quantity}
+											onChange={handlePartChange}
 										/>
 									</Form.Group>
 
@@ -352,8 +354,8 @@ const AddServiceOrder = () => {
 										<Form.Control
 											type="number"
 											name="unitPrice"
-											value={item.unitPrice}
-											onChange={handleItemChange}
+											value={part.unitPrice}
+											onChange={handlePartChange}
 										/>
 									</Form.Group>
 								</>
@@ -362,7 +364,7 @@ const AddServiceOrder = () => {
 									className="col23 m-4"
 									variant="primary"
 									type="button"
-									onClick={handleAddItem}>
+									onClick={handleAddPart}>
 									Add Part
 								</Button>
 							</div>
@@ -378,36 +380,32 @@ const AddServiceOrder = () => {
 									</tr>
 								</thead>
 								<tbody>
-									{itemsList.map((item) => (
-										<tr key={item.id}>
-											<td>{item.productId}</td>
-											<td>{item.productName}</td>
-											<td>{item.quantity}</td>
-											<td>{item.unitPrice}</td>
-											<td>{item.unitPrice * item.quantity}</td>
+									{partList.map((part) => (
+										<tr key={part.id}>
+											<td>{part.partId}</td>
+											<td>{part.name}</td>
+											<td>{part.quantity}</td>
+											<td>$ {parseFloat(part.unitPrice).toFixed(2)}</td>
+											<td>
+												${' '}
+												{parseFloat(part.unitPrice * part.quantity).toFixed(2)}
+											</td>
 										</tr>
 									))}
 								</tbody>
 							</Table>
-							<div className="d-flex justify-content-end mb-3">
-								<Button
-									variant="primary"
-									type="button"
-									onClick={handleAddItemsInvoice}>
-									Save Items
-								</Button>
-							</div>
+							<div className="d-flex justify-content-end mb-3"></div>
 							<div className="d-flex justify-content-end">
 								<Button variant="primary" type="submit">
-									Save Invoice
+									Save Service Order
 								</Button>
 							</div>
 						</Form>
 					</Container>
 				</Card>
 			</Container>
-			{message && <p className="fs-4 text-center text-success">{message}</p>}
-			{error ? <p className="fs-4 text-center text-danger">{error}</p> : null}
+			{message && <p className="fs-6 mt-2 alert alert-success">{message}</p>}
+			{error && <p className="fs-6 mt-2 alert alert-danger">{error}</p>}
 		</>
 	);
 };

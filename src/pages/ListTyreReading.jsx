@@ -4,6 +4,7 @@ import { Button, Container, Form, Card} from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
+import moment from 'moment';
 
 const ListTyreReading = () => {
 	const [tyreReadingList, setTyreReadingList] = useState([]);
@@ -59,10 +60,10 @@ const ListTyreReading = () => {
 								{tyreReadingList.map((r) => (
 									<tr key={r.id}>
 										<td>{r.id}</td>
-										<td>{r.readingDate}</td>
-										<td>{r.insideTread}</td>
-										<td>{r.midleTread}</td>
-										<td>{r.outsideTread}</td>
+										<td>{moment(r.readingDate).format('DD/MM/YYYY')}</td>
+										<td>{r.insideTread} mm</td>
+										<td>{r.midleTread} mm</td>
+										<td>{r.outsideTread} mm</td>
 									</tr>
 								))}
 							</tbody>

@@ -81,7 +81,7 @@ const AddExpense = () => {
 			<Container className="mt-4 col-md-4">
 				<Card>
 					<CardHeader className="text-center fs-4">
-						Expense Registration
+						Trip Expense Registration
 					</CardHeader>
 					<Container className="p-4">
 						<Form onSubmit={handleSubmit}>

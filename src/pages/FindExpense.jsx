@@ -48,7 +48,7 @@ const FindExpense = () => {
 										<td>{moment(e.expenseDate).format('DD/MM/YYYY')}</td>
 										<td>{e.description}</td>
 										<td>{e.category}</td>
-										<td className="">$ {e.value.toFixed(2)}</td>
+										<td >$ {e.value.toFixed(2)}</td>
 									</tr>
 								))}
 								<tr>

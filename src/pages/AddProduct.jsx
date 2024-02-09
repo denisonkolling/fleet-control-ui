@@ -70,7 +70,7 @@ const AddProduct = () => {
 							<Form.Group className="mb-3" controlId="formBasicUnitValue">
 								<Form.Label>Unit Value</Form.Label>
 								<Form.Control
-									type="text"
+									type="number"
 									name="unitValue"
 									value={product.unitValue}
 									onChange={handleChange}
@@ -80,7 +80,7 @@ const AddProduct = () => {
 							<Form.Group className="mb-3" controlId="formBasicWeight">
 								<Form.Label>Weight</Form.Label>
 								<Form.Control
-									type="text"
+									type="number"
 									name="weight"
 									value={product.weight}
 									onChange={handleChange}

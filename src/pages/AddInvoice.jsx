@@ -307,8 +307,8 @@ const AddInvoice = () => {
 											<td>{item.productId}</td>
 											<td>{item.productName}</td>
 											<td>{item.quantity}</td>
-											<td>{item.unitPrice}</td>
-											<td>{item.unitPrice * item.quantity}</td>
+											<td>$ {item.unitPrice}</td>
+											<td>$ {(item.unitPrice * item.quantity).toFixed(2)}</td>
 										</tr>
 									))}
 								</tbody>

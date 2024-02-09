@@ -68,7 +68,6 @@ const AddInvoice = () => {
 		invoiceService
 			.saveInvoice(invoice)
 			.then((res) => {
-				setMessage('Invoice Added Successfuly!');
 				setInvoice({
 					number: '',
 					date: '',
@@ -78,9 +77,11 @@ const AddInvoice = () => {
 					buyerName: '',
 					items: [],
 				});
+				setMessage('Invoice added successfuly!');
 				setItemsList([]);
 			})
 			.catch((error) => {
+				setError('Something went wrong on server!');
 				console.log(error);
 			});
 	};
@@ -329,9 +330,10 @@ const AddInvoice = () => {
 						</Form>
 					</Container>
 				</Card>
+				{message && (<p className="fs-6 mt-2 alert alert-success">{message}</p>)}
+				{error && <p className="fs-6 mt-2 alert alert-danger">{error}</p>}
 			</Container>
-			{message && <p className="fs-4 text-center text-success">{message}</p>}
-			{error ? <p className="fs-4 text-center text-danger">{error}</p> : null}
+		
 		</>
 	);
 };

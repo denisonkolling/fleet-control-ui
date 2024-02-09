@@ -158,9 +158,9 @@ const AddExpense = () => {
 					</Container>
 				</Card>
 				{message && (
-					<p className="fs-4 mt-2 text-center text-success">{message}</p>
+					<p className="fs-6 mt-2 alert alert-success">{message}</p>
 				)}
-				{error && <p className="fs-4 mt-2 text-center text-danger">{error}</p>}
+				{error && <p className="fs-6 mt-2 alert alert-danger">{error}</p>}
 			</Container>
 		</>
 	);

@@ -81,7 +81,7 @@ const AddTyre = () => {
 					position: '',
 					vehicle: '',
 				});
-				setMessage('Vehicle added successfully!');
+				setMessage('Tyre added successfully!');
 			})
 			.catch((error) => {
 				setError('Something went wrong on server!');

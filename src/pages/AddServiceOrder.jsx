@@ -236,7 +236,7 @@ const AddServiceOrder = () => {
 										</Form.Group>
 
 										<Form.Group className="col-3">
-											<Form.Label>Product Name</Form.Label>
+											<Form.Label>Service Name</Form.Label>
 											<Form.Control
 												type="text"
 												name="productName"
@@ -272,7 +272,7 @@ const AddServiceOrder = () => {
 										variant="primary"
 										type="button"
 										onClick={handleAddItem}>
-										Add Item
+										Add Service
 									</Button>
 								</div>
 
@@ -327,7 +327,7 @@ const AddServiceOrder = () => {
 									</Form.Group>
 
 									<Form.Group className="col-3">
-										<Form.Label>Product Name</Form.Label>
+										<Form.Label>Part Name</Form.Label>
 										<Form.Control
 											type="text"
 											name="productName"
@@ -363,7 +363,7 @@ const AddServiceOrder = () => {
 									variant="primary"
 									type="button"
 									onClick={handleAddItem}>
-									Add Item
+									Add Part
 								</Button>
 							</div>
 

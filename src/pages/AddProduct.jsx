@@ -12,6 +12,9 @@ const AddProduct = () => {
 		available: false,
 	});
 
+	const [message, setMessage] = useState('');
+	const [error, setError] = useState('');
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		productService
@@ -24,8 +27,10 @@ const AddProduct = () => {
 					weight: '',
 					available: false,
 				});
+				setMessage('Product added successfully!');
 			})
 			.catch((error) => {
+				setError('Something went wrong on server!');
 				console.log(error);
 			});
 	};
@@ -103,6 +108,10 @@ const AddProduct = () => {
 						</Form>
 					</Container>
 				</Card>
+				{message && (
+					<p className="fs-6 mt-2 alert alert-success">{message}</p>
+				)}
+				{error && <p className="fs-6 mt-2 alert alert-danger">{error}</p>}
 			</Container>
 		</>
 	);

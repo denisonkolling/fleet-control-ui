@@ -4,6 +4,8 @@ import { Container, Card } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
+import moment from 'moment/moment';
+
 
 const ListExpense = () => {
 	const [expenseList, setExpenseList] = useState([]);
@@ -48,8 +50,8 @@ const ListExpense = () => {
 								<td>{e.id}</td>
 								<td>{e.description}</td>
 								<td>{e.category}</td>
-								<td>{e.value}</td>
-								<td>{e.date}</td>
+								<td>$ {e.value}</td>
+								<td>{moment(e.expenseDate).format('L')}</td>
 							</tr>
 						))}
 					</tbody>

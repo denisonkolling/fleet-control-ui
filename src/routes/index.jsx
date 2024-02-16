@@ -6,7 +6,7 @@ import AddVehicle from '../pages/AddVehicle';
 import AddTyre from '../pages/AddTyre';
 import AddCustomer from '../pages/AddCustomer';
 import AddInvoice from '../pages/AddInvoice';
-import ListRepairOrder from '../pages/ListRepairOrder';
+import ListRepairOrder from '../pages/RepairOrder/ListRepairOrder';
 import ListVehicle from '../pages/ListVehicle';
 import ListExpense from '../pages/ListExpense';
 import ListTyre from '../pages/ListTyre';

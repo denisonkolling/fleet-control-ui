@@ -31,6 +31,7 @@ import AddTyreReading from '../pages/AddTyreReading';
 import FindExpense from '../pages/FindExpense';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import VehiclesMap from '../pages/VehiclesMap';
 
 
 const RoutesApp = () => {
@@ -67,7 +68,8 @@ const RoutesApp = () => {
 				<Route exact path="/find-driver" element={<FindDriver />} />
 				<Route exact path="/find-expense" element={<FindExpense />} />
 				<Route exact path="/invoice-find" element={<FindInvoice />} />
-				<Route exact path="signup" element={<Signup />} />
+				<Route exact path="/vehicles-map" element={<VehiclesMap />} />
+				<Route exact path="/signup" element={<Signup />} />
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} />
 			</Routes>

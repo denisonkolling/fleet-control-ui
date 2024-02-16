@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import NavbarSystem from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import { FaRegEdit, FaTrash } from 'react-icons/fa';
 
 const ListTrip = () => {
 	const [tripList, setTripList] = useState([]);
@@ -41,7 +42,7 @@ const ListTrip = () => {
 									<th>Destination</th>
 									<th>Distance</th>
 									<th>Invoice</th>
-									<th>Total Expenses</th>
+									<th>Expenses</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -56,10 +57,13 @@ const ListTrip = () => {
 										<td>{t.invoice}</td>
 										<td>{t.tripTotalExpense}</td>
 										<td>
+											<Link to={`/trip-edit/${t.id}`} className="mx-1">
+												<FaRegEdit />
+											</Link>
 											<Link
 												to={`/trip-edit/${t.id}`}
-												className="btn btn-sm btn-primary px-4 m-1">
-												Edit
+												className="text-danger mx-2">
+												<FaTrash />
 											</Link>
 										</td>
 									</tr>

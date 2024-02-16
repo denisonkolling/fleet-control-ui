@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import NavbarSystem from '../components/Navbar';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { Link } from 'react-router-dom';
+import { FaRegEdit, FaTrash } from 'react-icons/fa';
 
 const ListTyre = () => {
 	const [tyreList, setTyreList] = useState([]);
@@ -43,6 +44,7 @@ const ListTyre = () => {
 									<th>Serial</th>
 									<th>Position</th>
 									<th>Vehicle</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -56,10 +58,13 @@ const ListTyre = () => {
 										<td>{t.position}</td>
 										<td>{t.vehicle}</td>
 										<td>
+											<Link to={`/tyre-edit/${t.id}`} className="mx-1">
+												<FaRegEdit />
+											</Link>
 											<Link
 												to={`/tyre-edit/${t.id}`}
-												className="btn btn-sm btn-primary px-4">
-												Edit
+												className="text-danger mx-2">
+												<FaTrash />
 											</Link>
 										</td>
 									</tr>

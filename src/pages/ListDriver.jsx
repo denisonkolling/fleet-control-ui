@@ -6,6 +6,7 @@ import CardHeader from 'react-bootstrap/esm/CardHeader';
 import NavbarSystem from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import moment from 'moment/moment';
+import { FaRegEdit, FaTrash  } from "react-icons/fa";
 
 const ListDriver = () => {
 	const [driverList, setDriverList] = useState([]);
@@ -59,10 +60,15 @@ const ListDriver = () => {
 										<td>
 											<Link
 												to={`/driver-edit/${d.id}`}
-												className="btn btn-sm btn-primary px-4">
-												Edit
+												className="mx-1">
+												<FaRegEdit />
 											</Link>
-										</td>
+										<Link
+												to={`/driver-edit/${d.id}`}
+												className="text-danger mx-2">
+												<FaTrash />
+											</Link>
+											</td>
 									</tr>
 								))}
 							</tbody>

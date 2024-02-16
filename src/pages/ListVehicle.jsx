@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import NavbarSystem from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import { FaRegEdit, FaTrash  } from "react-icons/fa";
 
 const ListVehicle = () => {
 	const [vehicleList, setVehicleList] = useState([]);
@@ -46,7 +47,7 @@ const ListVehicle = () => {
 							</thead>
 							<tbody>
 								{vehicleList.map((v) => (
-									<tr key={v.id}>
+									<tr className='' key={v.id}>
 										<td>{v.id}</td>
 										<td>{v.plate}</td>
 										<td>{v.driver}</td>
@@ -56,10 +57,15 @@ const ListVehicle = () => {
 										<td>
 											<Link
 												to={`/vehicle-edit/${v.id}`}
-												className="btn btn-sm btn-primary px-4 m-1">
-												Edit
+												className="mx-1">
+												<FaRegEdit />
 											</Link>
-										</td>
+										<Link
+												to={`/vehicle-edit/${v.id}`}
+												className="text-danger mx-2">
+												<FaTrash />
+											</Link>
+											</td>
 									</tr>
 								))}
 							</tbody>

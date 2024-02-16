@@ -63,37 +63,37 @@ const VehiclesMap = () => {
 					</div>
 				</Card>
 				{data.map((t)=>(
-				<Card className="my-2">
+				<Card className="my-2 bg-body-secondary">
 					<div className="d-flex justify-content-between">
 						<div className="flex-column p-2">
-							<h4>{t.plate}</h4>
-							<span>{t.vehicle}</span>
+							<p className='mb-0 fw-bold fs-5'>{t.plate}</p>
+							<span className='fw-light fs-6'>{t.vehicle}</span>
 						</div>
 						<div className="flex-column p-2">
-							<h4>{t.start}</h4>
+							<p className='mb-0 fs-5 fw-bold'>{t.start}</p>
 							<span>Start</span>
 						</div>
 						<div className="flex-column p-2">
-							<h4>{t.destination}</h4>
+						<p className='mb-0 fs-5 fw-bold'>{t.destination}</p>
 							<span>Destination</span>
 						</div>
 						<div className="flex-column p-2">
-							<h4>{t.driver}</h4>
+						<p className='mb-0 fs-5 fw-bold'>{t.driver}</p>
 							<span>Driver</span>
 						</div>
 						<div className="flex-column p-2">
 							<p className="mt-2 btn btn-success">{t.status}</p>
 						</div>
-						<div className="flex-column p-2">
-							<h4 className="">{t.customer}</h4>
+						<div className="flex-column p-2 ">
+						<p className='mb-0  fs-5 fw-bold'>{t.customer}</p>
 							<span>Customer</span>
 						</div>
 						<div className="flex-column p-2">
-							<h4 className="">{t.speed} Km/h</h4>
+						<p className='mb-0 fs-5 fw-bold'>{t.speed} Km/h</p>
 							<span>Velocidade</span>
 						</div>
 						<div className="flex-column p-2">
-							<h4 className="">{t.ignition}</h4>
+						<p className='mb-0 fs-5 fw-bold'>{t.ignition}</p>
 							<span>Ignition</span>
 						</div>
 					</div>

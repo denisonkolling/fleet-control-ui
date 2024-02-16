@@ -27,7 +27,7 @@ function NavbarSystem() {
               <NavDropdown.Item href="/vehicle-service-order">List Service Order</NavDropdown.Item>
               <NavDropdown.Item href="/register-service-order">Create Service Order</NavDropdown.Item>
               <NavDropdown.Item href="/vehicle-mileage">Mileage Control</NavDropdown.Item>
-              <NavDropdown.Item href="/vehicle-map">Vehicles Map</NavDropdown.Item>
+              <NavDropdown.Item href="/vehicles-map">Vehicles Map</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Drivers" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/register-driver">Register Driver</NavDropdown.Item>

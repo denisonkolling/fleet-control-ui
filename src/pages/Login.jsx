@@ -46,15 +46,15 @@ const Login = () => {
 								</div>
 
 								<h1 className="mb-5 display-3 fw-bold ls-tight">
-									A melhor maneira
+									The best way
 									<br />
-									<span className="text-primary">de controlar sua frota!</span>
+									<span className="text-primary">to control your fleet!</span>
 								</h1>
-								<p style={{ color: 'hsl(217, 10%, 50.8%)' }}>
-									Realize a gestão da operação logística de forma eficiente!
-									Acesse suas informações de qualquer dispositivo e acompanhe em
-									tempo real os indicadores da operação.
-								</p>
+								<h4 className='fw-light' style={{ color: 'hsl(217, 10%, 50.8%)' }}>
+									Manage logistics operations efficiently! Access your
+									information from any device and track it in real time
+									operation indicators.
+								</h4>
 							</div>
 
 							<div className="col-lg-6 mb-5 mb-lg-0">
@@ -63,12 +63,13 @@ const Login = () => {
 										<form onSubmit={handleSubmit}>
 											<div className="row">
 												<div className="mb-4">
-													<div className="d-flex">
-														<FaTruck size={50} />
-														<h1>&nbsp;Fleet Control</h1>
+													<div className="text-center">
+														<div className="d-flex justify-content-center">
+															<h1>Login</h1>
+														</div>
 													</div>
-													<p className="fw-lighter fs-4">
-														Para acessar sua conta realize o login
+													<p className="fw-lighter fs-4 text-center">
+														To access your account log in
 													</p>
 												</div>
 											</div>
@@ -81,7 +82,7 @@ const Login = () => {
 													className="form-control"
 													value={formData.email}
 													onChange={handleInputChange}
-													placeholder="Endereço de email"
+													placeholder="Email"
 												/>
 											</div>
 
@@ -93,18 +94,21 @@ const Login = () => {
 													className="form-control"
 													value={formData.password}
 													onChange={handleInputChange}
-													placeholder="Senha"
+													placeholder="Password"
 												/>
 											</div>
 											<div className="d-flex">
 												<button
 													type="submit"
 													className="btn btn-primary btn-block mb-4 w-100 mt-3">
-													Entrar
+													Login
 												</button>
 											</div>
 											<div className="text-center">
-												<p>ou acesse com:</p>
+												<p>
+													Don't have a registration?
+													<a> Register.</a>
+												</p>
 												<button
 													type="button"
 													className="btn btn-link btn-floating mx-1">

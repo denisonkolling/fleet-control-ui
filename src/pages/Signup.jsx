@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { FaFacebook, FaGoogle, FaTwitter, FaGithub, FaTruck } from 'react-icons/fa';
+import {
+	FaFacebook,
+	FaGoogle,
+	FaTwitter,
+	FaGithub,
+	FaTruck,
+} from 'react-icons/fa';
 
 const Signup = () => {
-
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -40,21 +45,31 @@ const Signup = () => {
 									<h1>&nbsp;Fleet Control</h1>
 								</div>
 								<h1 className="mb-5 display-3 fw-bold ls-tight">
-									A melhor maneira
+									The best way
 									<br />
-									<span className="text-primary">de controlar sua frota!</span>
+									<span className="text-primary">to control your fleet!</span>
 								</h1>
-								<p style={{ color: 'hsl(217, 10%, 50.8%)' }}>
-									Realize a gestão da operação logística de forma eficiente! Acesse suas
-									informações de qualquer dispositivo e acompanhe em tempo real
-									os indicadores da operação.
-								</p>
+								<h4 className='fw-light' style={{ color: 'hsl(217, 10%, 50.8%)' }}>
+									Manage logistics operations efficiently! Access your
+									information from any device and track it in real time
+									operation indicators.
+								</h4>
 							</div>
 
 							<div className="col-lg-6 mb-5 mb-lg-0">
 								<div className="card">
 									<div className="card-body py-5 px-md-5">
 										<form onSubmit={handleSubmit}>
+											<div className="row">
+												<div className="mb-4">
+													<div className="text-center">
+														<h1 className="text-center">&nbsp;Register</h1>
+													</div>
+													<p className="fw-lighter fs-4 text-center">
+													Register to access the platform
+													</p>
+												</div>
+											</div>
 											<div className="row">
 												<div className="col-md-6 mb-4">
 													<div className="form-outline">
@@ -65,7 +80,7 @@ const Signup = () => {
 															className="form-control"
 															value={formData.firstName}
 															onChange={handleInputChange}
-															placeholder="Nome"
+															placeholder="First Name"
 														/>
 													</div>
 												</div>
@@ -78,7 +93,7 @@ const Signup = () => {
 															className="form-control"
 															value={formData.lastName}
 															onChange={handleInputChange}
-															placeholder="Sobrenome"
+															placeholder="Last Name"
 														/>
 													</div>
 												</div>
@@ -92,7 +107,7 @@ const Signup = () => {
 													className="form-control"
 													value={formData.email}
 													onChange={handleInputChange}
-													placeholder="Endereço de email"
+													placeholder="Email"
 												/>
 											</div>
 
@@ -104,34 +119,21 @@ const Signup = () => {
 													className="form-control"
 													value={formData.password}
 													onChange={handleInputChange}
-													placeholder="Senha"
+													placeholder="Password"
 												/>
 											</div>
 
-											<div className="form-check d-flex justify-content-center mb-4">
-												<input
-													className="form-check-input me-2"
-													type="checkbox"
-													id="form2Example33"
-													name="subscribe"
-													checked={formData.subscribe}
-													onChange={handleInputChange}
-												/>
-												<label
-													className="form-check-label"
-													htmlFor="form2Example33">
-													Inscreva-se em nossa newsletter
-												</label>
-											</div>
 											<div className="d-flex">
 												<button
 													type="submit"
 													className="btn btn-primary btn-block mb-4 w-100">
-													Cadastrar
+													Register
 												</button>
 											</div>
 											<div className="text-center">
-												<p>ou acesse com:</p>
+												<p>
+												Already have an account? Login.
+												</p>
 												<button
 													type="button"
 													className="btn btn-link btn-floating mx-1">

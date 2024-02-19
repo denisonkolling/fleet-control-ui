@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FaTruck } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 function NavbarSystem() {
   return (
@@ -18,57 +19,57 @@ function NavbarSystem() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link to="/home">Home</Nav.Link>
             
             <NavDropdown title="Vehicles" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-vehicle">Register Vehicle</NavDropdown.Item>
+              <Link to="/register-vehicle">Register Vehicle</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/vehicle-list">List Vehicles</NavDropdown.Item>
-              <NavDropdown.Item href="/vehicle-service-order">List Service Order</NavDropdown.Item>
-              <NavDropdown.Item href="/register-service-order">Create Service Order</NavDropdown.Item>
-              <NavDropdown.Item href="/vehicle-mileage">Mileage Control</NavDropdown.Item>
-              <NavDropdown.Item href="/vehicles-map">Vehicles Map</NavDropdown.Item>
+              <Link to="/vehicle-list">List Vehicles</Link>
+              <Link to="/vehicle-service-order">List Service Order</Link>
+              <Link to="/register-service-order">Create Service Order</Link>
+              <Link to="/vehicle-mileage">Mileage Control</Link>
+              <Link to="/vehicles-map">Vehicles Map</Link>
             </NavDropdown>
             <NavDropdown title="Drivers" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-driver">Register Driver</NavDropdown.Item>
-              <NavDropdown.Item href="/find-driver">Find Drivers</NavDropdown.Item>
+              <Link to="/register-driver">Register Driver</Link>
+              <Link to="/find-driver">Find Drivers</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/driver-list">List Drivers</NavDropdown.Item>
-              <NavDropdown.Item href="/register-driving-hours">Driving Hours</NavDropdown.Item>
+              <Link to="/driver-list">List Drivers</Link>
+              <Link to="/register-driving-hours">Driving Hours</Link>
             </NavDropdown>
             <NavDropdown title="Tyres" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-tyre">Register Tyre</NavDropdown.Item>
-              <NavDropdown.Item href="/tyre-list">List Tyres</NavDropdown.Item>
+              <Link to="/register-tyre">Register Tyre</Link>
+              <Link to="/tyre-list">List Tyres</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/register-tyre-reading">Register Tyre Reading</NavDropdown.Item>
-              <NavDropdown.Item href="/tyre-reading">List Tyre Reading</NavDropdown.Item>
+              <Link to="/register-tyre-reading">Register Tyre Reading</Link>
+              <Link to="/tyre-reading">List Tyre Reading</Link>
             </NavDropdown>
             <NavDropdown title="Trips" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-trip">Register Trip</NavDropdown.Item>
-              <NavDropdown.Item href="/trip-list">List Trips</NavDropdown.Item>
+              <Link to="/register-trip">Register Trip</Link>
+              <Link to="/trip-list">List Trips</Link>
             </NavDropdown>
             <NavDropdown title="Expenses" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-expense">Register Expense</NavDropdown.Item>
-              <NavDropdown.Item href="/expense-list">List Expenses</NavDropdown.Item>
-              <NavDropdown.Item href="/find-expense">Expenses by Trip</NavDropdown.Item>
+              <Link to="/register-expense">Register Expense</Link>
+              <Link to="/expense-list">List Expenses</Link>
+              <Link to="/find-expense">Expenses by Trip</Link>
             </NavDropdown>
             <NavDropdown title="Customer" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-customer">Register Customer</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Customer</NavDropdown.Item>
+              <Link to="/register-customer">Register Customer</Link>
+              <Link to="#action4">Find Customer</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/customer-list">List Customer</NavDropdown.Item>
+              <Link to="/customer-list">List Customer</Link>
             </NavDropdown>
             <NavDropdown title="Invoice" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-invoice">Register Invoice</NavDropdown.Item>
-              <NavDropdown.Item href="/invoice-find">Find Invoice</NavDropdown.Item>
+              <Link to="/register-invoice">Register Invoice</Link>
+              <Link to="/invoice-find">Find Invoice</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/invoice-list">List Invoice</NavDropdown.Item>
+              <Link to="/invoice-list">List Invoice</Link>
             </NavDropdown>
             <NavDropdown title="Products" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/register-product">Register Products</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Find Invoice</NavDropdown.Item>
+              <Link to="/register-product">Register Products</Link>
+              <Link to="#action4">Find Invoice</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/product-list">List Products</NavDropdown.Item>
+              <Link to="/product-list">List Products</Link>
             </NavDropdown>
            
           </Nav>

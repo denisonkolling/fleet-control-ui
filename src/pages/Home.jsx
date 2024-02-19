@@ -3,6 +3,12 @@ import NavbarSystem from '../components/Navbar';
 import { Card, Container, Badge, Button } from 'react-bootstrap';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import Modal from '../components/Modal';
+import AreaChart from '../components/Charts/AreaChart';
+import BarChart from '../components/Charts/BarChart';
+import GeoChart from '../components/Charts/GeoChart';
+import DonutChart from '../components/Charts/DonutChart';
+import { GiCarWheel, GiMoneyStack, GiFuelTank } from 'react-icons/gi';
+import { BsFillFuelPumpFill, BsCashStack } from 'react-icons/bs';
 
 const Home = () => {
 	const [modalOpened, setModalOpened] = useState(false);
@@ -20,25 +26,72 @@ const Home = () => {
 					<CardHeader className="text-center">
 						Welcome to Fleet Control Management System!
 					</CardHeader>
-					<h4 className="m-2">
-						Tyres Control <Badge bg="secondary">New!</Badge>
-					</h4>
-					<p className="ms-2">Check your fleet tyres performance</p>
-					<h4 className="m-2">
-						Tip Expenses Control <Badge bg="secondary">New!</Badge>
-					</h4>
-					<p className="ms-2">Control your fleet expenses by budget</p>
-					<h4 className="m-2">
-						Fuel Control <Badge bg="secondary">New!</Badge>
-					</h4>
-					<p className="ms-2">
-						Measure your drivers and vehicle fuel consumption
-					</p>
+					<Container className="d-flex column m-4">
+						<h4 className="m-2 text-center">
+							Tyres Control
+							<Badge bg="secondary" className="m-2">
+								<GiCarWheel /> New!
+							</Badge>
+						</h4>
+						<p className="m-2 text-center">
+							Check your fleet tyres performance
+						</p>
+						<h4 className="m-2 text-center">
+							Trip Expenses
+							<Badge bg="secondary" className="m-2">
+								<BsCashStack /> New!
+							</Badge>
+						</h4>
+						<p className="m-2 text-center">
+							Control your fleet expenses by budget
+						</p>
+						<h4 className="m-2 text-center">
+							Fuel Control{' '}
+							<Badge bg="secondary" className="m-2">
+								<BsFillFuelPumpFill /> New!
+							</Badge>
+						</h4>
+						<p className="m-2 text-center">
+							Measure your drivers and vehicle fuel consumption
+						</p>
+					</Container>
+
+					<Container>
+						<div className="d-flex flex-wrap">
+							<Container className="col-6">
+								<h3>Projected Cash Flow</h3>
+								<AreaChart />
+							</Container>
+							<Container className="col-6">
+								<h3>Fuel Stock</h3>
+								<BarChart />
+							</Container>
+						</div>
+					</Container>
+
+					<Container>
+						<div className="d-flex flex-wrap">
+							<Container className="col-6">
+								<h3>Fleet Location</h3>
+								<GeoChart />
+							</Container>
+							<Container className="col-6">
+								<h3>Fleet Status</h3>
+								<DonutChart />
+							</Container>
+						</div>
+					</Container>
 				</Card>
-				<Button onClick={() => handleOpenModal()}>Modal</Button>
+
+				<Button onClick={() => handleOpenModal()} className="my-4">
+					Modal Example
+				</Button>
 				<Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
 					<>
-						<h5>Modal Text</h5>
+						<Container>
+							<h1>Fleet Location</h1>
+							<GeoChart />
+						</Container>
 					</>
 				</Modal>
 			</Container>

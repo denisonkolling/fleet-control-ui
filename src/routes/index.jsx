@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import AddDriver from '../pages/AddDriver';
@@ -32,11 +32,17 @@ import FindExpense from '../pages/FindExpense';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import VehiclesMap from '../pages/VehiclesMap';
+import { Fragment } from 'react';
 
+const Private = ({ Page }) => {
+	const { isLogged } = useState();
+	return !!isLogged ? <Page /> : <Login />;
+};
 
 const RoutesApp = () => {
 	return (
 		<BrowserRouter>
+		<Fragment>
 			<Routes>
 			  <Route path="/" element={<Home />} />
 				<Route exact path="/home" element={<Home />} />
@@ -73,6 +79,7 @@ const RoutesApp = () => {
 				<Route path="/" element={<Login />} />
 				<Route path="*" element={<Login />} />
 			</Routes>
+			</Fragment>
 		</BrowserRouter>
 	);
 };

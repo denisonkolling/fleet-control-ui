@@ -11,7 +11,7 @@ function NavbarSystem() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand to="/home"><FaTruck /> Fleet Control</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/home"><FaTruck /> Fleet Control</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -19,57 +19,57 @@ function NavbarSystem() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link to="/home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/home">Home</Nav.Link>
             
             <NavDropdown title="Vehicles" id="navbarScrollingDropdown">
-              <Link to="/register-vehicle">Register Vehicle</Link>
+              <NavDropdown.Item as={Link} to="/register-vehicle">Register Vehicle</NavDropdown.Item>
               <NavDropdown.Divider />
-              <Link to="/vehicle-list">List Vehicles</Link>
-              <Link to="/vehicle-service-order">List Service Order</Link>
-              <Link to="/register-service-order">Create Service Order</Link>
-              <Link to="/vehicle-mileage">Mileage Control</Link>
-              <Link to="/vehicles-map">Vehicles Map</Link>
+              <NavDropdown.Item as={Link} to="/vehicle-list">List Vehicles</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/vehicle-service-order">List Service Order</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/register-service-order">Create Service Order</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/vehicle-mileage">Mileage Control</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/vehicles-map">Vehicles Map</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Drivers" id="navbarScrollingDropdown">
-              <Link to="/register-driver">Register Driver</Link>
-              <Link to="/find-driver">Find Drivers</Link>
+              <NavDropdown.Item as={Link} to="/register-driver">Register Driver</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/find-driver">Find Drivers</NavDropdown.Item>
               <NavDropdown.Divider />
-              <Link to="/driver-list">List Drivers</Link>
-              <Link to="/register-driving-hours">Driving Hours</Link>
+              <NavDropdown.Item as={Link} to="/driver-list">List Drivers</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/register-driving-hours">Driving Hours</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Tyres" id="navbarScrollingDropdown">
-              <Link to="/register-tyre">Register Tyre</Link>
-              <Link to="/tyre-list">List Tyres</Link>
+              <NavDropdown.Item as={Link} to="/register-tyre">Register Tyre</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/tyre-list">List Tyres</NavDropdown.Item>
               <NavDropdown.Divider />
-              <Link to="/register-tyre-reading">Register Tyre Reading</Link>
-              <Link to="/tyre-reading">List Tyre Reading</Link>
+              <NavDropdown.Item as={Link} to="/register-tyre-reading">Register Tyre Reading</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/tyre-reading">List Tyre Reading</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Trips" id="navbarScrollingDropdown">
-              <Link to="/register-trip">Register Trip</Link>
-              <Link to="/trip-list">List Trips</Link>
+              <NavDropdown.Item as={Link} to="/register-trip">Register Trip</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/trip-list">List Trips</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Expenses" id="navbarScrollingDropdown">
-              <Link to="/register-expense">Register Expense</Link>
-              <Link to="/expense-list">List Expenses</Link>
-              <Link to="/find-expense">Expenses by Trip</Link>
+              <NavDropdown.Item as={Link} to="/register-expense">Register Expense</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/expense-list">List Expenses</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/find-expense">Expenses by Trip</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Customer" id="navbarScrollingDropdown">
-              <Link to="/register-customer">Register Customer</Link>
-              <Link to="#action4">Find Customer</Link>
+              <NavDropdown.Item as={Link} to="/register-customer">Register Customer</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="#action4">Find Customer</NavDropdown.Item>
               <NavDropdown.Divider />
-              <Link to="/customer-list">List Customer</Link>
+              <NavDropdown.Item as={Link} to="/customer-list">List Customer</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Invoice" id="navbarScrollingDropdown">
-              <Link to="/register-invoice">Register Invoice</Link>
-              <Link to="/invoice-find">Find Invoice</Link>
+              <NavDropdown.Item as={Link} to="/register-invoice">Register Invoice</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/invoice-find">Find Invoice</NavDropdown.Item>
               <NavDropdown.Divider />
-              <Link to="/invoice-list">List Invoice</Link>
+              <NavDropdown.Item as={Link} to="/invoice-list">List Invoice</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Products" id="navbarScrollingDropdown">
-              <Link to="/register-product">Register Products</Link>
-              <Link to="#action4">Find Invoice</Link>
+              <NavDropdown.Item as={Link} to="/register-product">Register Products</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="#action4">Find Invoice</NavDropdown.Item>
               <NavDropdown.Divider />
-              <Link to="/product-list">List Products</Link>
+              <NavDropdown.Item as={Link} to="/product-list">List Products</NavDropdown.Item>
             </NavDropdown>
            
           </Nav>

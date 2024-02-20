@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
 	FaFacebook,
 	FaGoogle,
@@ -6,31 +7,43 @@ import {
 	FaGithub,
 	FaTruck,
 } from 'react-icons/fa';
+import { AuthContext } from '../context/AuthContext';
+import Modal from '../components/Modal';
+import { FaCheck } from "react-icons/fa";
 
 const Signup = () => {
-	const [formData, setFormData] = useState({
-		firstName: '',
-		lastName: '',
-		email: '',
-		password: '',
-		subscribe: false,
-	});
+	const { addUser, checkEmail, checkPassword } = useContext(AuthContext);
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [message, setMessage] = useState('');
+	const [success, setSuccess] = useState('');
+	const [modalOpened, setModalOpened] = useState(false);
+	const navigate = useNavigate();
 
-	const handleInputChange = (event) => {
-		const { name, value, type, checked } = event.target;
-		const newValue = type === 'checkbox' ? checked : value;
-
-		setFormData({
-			...formData,
-			[name]: newValue,
-		});
+	const handleSignup = () => {
+		if (!email | !password) {
+			setMessage('Insert your email and password');
+			return;
+		} else if (!checkEmail(email)) {
+			setMessage('Insert a valid email' );
+			return;
+		} else if (!checkPassword(password)) {
+			setMessage('Password must contain 8 characters');
+			return;
+		}
+		addUser(email, password);
+		setSuccess('User account crested successfuly!');
+		setModalOpened(true);
+		cleanForm();
+		setTimeout(() => {
+			navigate('/login');
+		}, 300);
 	};
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		// Lógica de envio do formulário para o servidor.
+	const cleanForm = () => {
+		setEmail('');
+		setPassword('');
 	};
-
 	return (
 		<>
 			<section className="">
@@ -59,7 +72,7 @@ const Signup = () => {
 							<div className="col-lg-6 mb-5 mb-lg-0">
 								<div className="card">
 									<div className="card-body py-5 px-md-5">
-										<form onSubmit={handleSubmit}>
+										<form onSubmit={handleSignup}>
 											<div className="row">
 												<div className="mb-4">
 													<div className="text-center">
@@ -78,8 +91,8 @@ const Signup = () => {
 															id="form3Example1"
 															name="firstName"
 															className="form-control"
-															value={formData.firstName}
-															onChange={handleInputChange}
+															// value={formData.firstName}
+															// onChange={handleInputChange}
 															placeholder="First Name"
 														/>
 													</div>
@@ -91,8 +104,8 @@ const Signup = () => {
 															id="form3Example2"
 															name="lastName"
 															className="form-control"
-															value={formData.lastName}
-															onChange={handleInputChange}
+															// value={formData.lastName}
+															// onChange={handleInputChange}
 															placeholder="Last Name"
 														/>
 													</div>
@@ -105,8 +118,8 @@ const Signup = () => {
 													id="form3Example3"
 													name="email"
 													className="form-control"
-													value={formData.email}
-													onChange={handleInputChange}
+													value={email}
+													onChange={(e) => [setEmail(e.target.value), setMessage('')]}
 													placeholder="Email"
 												/>
 											</div>
@@ -117,8 +130,8 @@ const Signup = () => {
 													id="form3Example4"
 													name="password"
 													className="form-control"
-													value={formData.password}
-													onChange={handleInputChange}
+													value={password}
+													onChange={(e) => [setPassword(e.target.value), setMessage('')]}
 													placeholder="Password"
 												/>
 											</div>
@@ -176,6 +189,12 @@ const Signup = () => {
 							</div>
 						</div>
 					</div>
+					<Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
+					<div>
+						<FaCheck style={{ color: '#4daf23' }} />
+						&nbsp; {success} &nbsp;
+					</div>
+				</Modal>
 				</div>
 			</section>
 		</>

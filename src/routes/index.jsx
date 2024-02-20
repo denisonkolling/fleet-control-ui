@@ -29,7 +29,7 @@ import ListTrip from '../pages/ListTrip';
 import AddExpense from '../pages/AddExpense';
 import AddTyreReading from '../pages/AddTyreReading';
 import FindExpense from '../pages/FindExpense';
-import Login from '../pages/Login';
+import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import VehiclesMap from '../pages/VehiclesMap';
 import { Fragment } from 'react';
@@ -76,8 +76,8 @@ const RoutesApp = () => {
 				<Route exact path="/invoice-find" element={<FindInvoice />} />
 				<Route exact path="/vehicles-map" element={<VehiclesMap />} />
 				<Route exact path="/signup" element={<Signup />} />
-				<Route path="/" element={<Login />} />
-				<Route path="*" element={<Login />} />
+				<Route path="/" element={<Signin />} />
+				<Route path="*" element={<Signin />} />
 			</Routes>
 			</Fragment>
 		</BrowserRouter>

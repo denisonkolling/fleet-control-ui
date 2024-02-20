@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 import {
 	FaFacebook,
 	FaGoogle,
@@ -7,28 +9,28 @@ import {
 	FaTruck,
 } from 'react-icons/fa';
 
-const Login = () => {
-	const [formData, setFormData] = useState({
-		firstName: '',
-		lastName: '',
-		email: '',
-		password: '',
-		subscribe: false,
-	});
+const Signin = () => {
 
-	const handleInputChange = (event) => {
-		const { name, value, type, checked } = event.target;
-		const newValue = type === 'checkbox' ? checked : value;
+	const { login, checkEmail, checkPassword } = useAuth();
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [message, setMessage] = useState('');
+	const navigate = useNavigate();
 
-		setFormData({
-			...formData,
-			[name]: newValue,
-		});
-	};
+	const handleLogin = () => {
+		if (!checkEmail(email)) {
+			setMessage('Insert a valid email');
+			return;
+		}
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		// Lógica de envio do formulário para o servidor.
+		const response = login(email, password);
+
+		if (response) {
+			setMessage(response);
+			return;
+		}
+
+		navigate('/home');
 	};
 
 	return (
@@ -60,7 +62,7 @@ const Login = () => {
 							<div className="col-lg-6 mb-5 mb-lg-0">
 								<div className="card">
 									<div className="card-body py-5 px-md-5">
-										<form onSubmit={handleSubmit}>
+										<form onSubmit={handleLogin}>
 											<div className="row">
 												<div className="mb-4">
 													<div className="text-center">
@@ -80,8 +82,8 @@ const Login = () => {
 													id="form3Example3"
 													name="email"
 													className="form-control"
-													value={formData.email}
-													onChange={handleInputChange}
+													value={email}
+													onChange={(e) => [setEmail(e.target.value), setMessage('')]}
 													placeholder="Email"
 												/>
 											</div>
@@ -89,11 +91,10 @@ const Login = () => {
 											<div className="form-outline mb-4">
 												<input
 													type="password"
-													id="form3Example4"
 													name="password"
 													className="form-control"
-													value={formData.password}
-													onChange={handleInputChange}
+													value={password}
+													onChange={(e) => [setPassword(e.target.value), setMessage('')]}
 													placeholder="Password"
 												/>
 											</div>
@@ -103,6 +104,9 @@ const Login = () => {
 													className="btn btn-primary btn-block mb-4 w-100 mt-3">
 													Login
 												</button>
+											</div>
+											<div>
+											<p>{message}</p>
 											</div>
 											<div className="text-center">
 												<p>
@@ -157,4 +161,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Signin;

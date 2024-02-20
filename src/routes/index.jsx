@@ -33,9 +33,10 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import VehiclesMap from '../pages/VehiclesMap';
 import { Fragment } from 'react';
+import useAuth from '../hooks/useAuth';
 
 const Private = ({ Page }) => {
-	const { isLogged } = useState();
+	const { isLogged } = useAuth();
 	return !!isLogged ? <Page /> : <Signin />;
 };
 

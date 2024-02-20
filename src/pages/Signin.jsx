@@ -62,7 +62,7 @@ const Signin = () => {
 							<div className="col-lg-6 mb-5 mb-lg-0">
 								<div className="card">
 									<div className="card-body py-5 px-md-5">
-										<form onSubmit={handleLogin}>
+										<div>
 											<div className="row">
 												<div className="mb-4">
 													<div className="text-center">
@@ -79,7 +79,6 @@ const Signin = () => {
 											<div className="form-outline mb-4">
 												<input
 													type="email"
-													id="form3Example3"
 													name="email"
 													className="form-control"
 													value={email}
@@ -100,7 +99,7 @@ const Signin = () => {
 											</div>
 											<div className="d-flex">
 												<button
-													type="submit"
+													onClick={handleLogin}
 													className="btn btn-primary btn-block mb-4 w-100 mt-3">
 													Login
 												</button>
@@ -149,7 +148,7 @@ const Signin = () => {
 														height="30"></FaGithub>
 												</button>
 											</div>
-										</form>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -100,7 +100,7 @@ const ListRepairOrder = () => {
 				<div
 					style={{
 						display: 'grid',
-						gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+						gridTemplateColumns: 'repeat(auto-fill, minmax(305px, 1fr))',
 						gap: '1rem',
 						alignItems: 'flex-start',
 					}}>
@@ -116,7 +116,7 @@ const ListRepairOrder = () => {
 									</div>
 									<div className="mx-3">
 										<div className=" d-grid">
-											<span>
+											<span className='my-2 mx-2'>
 												<FaRegClock />
 												<span>
 													&emsp; Open Date{' '}

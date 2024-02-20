@@ -89,7 +89,7 @@ const Home = () => {
 				<Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
 					<>
 						<Container>
-							<h1>Fleet Location</h1>
+							<h1 className='text-center mb-0'>Fleet Location</h1>
 							<GeoChart />
 						</Container>
 					</>

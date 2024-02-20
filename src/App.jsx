@@ -1,15 +1,12 @@
-
-import NavbarSystem from './components/Navbar'
-import RoutesApp from './routes'
-
+import RoutesApp from './routes';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
-
-  return (
-    <>
-     <RoutesApp />
-    </>
-  )
+	return (
+		<AuthProvider>
+			<RoutesApp />
+		</AuthProvider>
+	);
 }
 
-export default App
+export default App;

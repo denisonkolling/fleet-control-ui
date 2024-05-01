@@ -109,8 +109,8 @@ const Signin = () => {
 											</div>
 											<div className="text-center">
 												<p>
-													Don't have a registration?
-													<a> Register.</a>
+													Don&apos;t have a registration?{" "}
+													<Link to="/signup">Register</Link>
 												</p>
 												<button
 													type="button"

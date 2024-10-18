@@ -12,7 +12,7 @@
 <br>
 
 <p align="center">
-  <img alt="pharma-kontroll" src="./assets/logo.png" width="40%" >
+  <img alt="fleet-control-dashboard" src="./assets/fleet-control-dashboard.jpg" width="85%" >
 </p>
 
 ## 🚀 Tecnologias
